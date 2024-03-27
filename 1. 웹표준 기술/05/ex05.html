@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            input[type = "checkbox"]:checked+label{/*인접형제 선택자 사용*/
+                background: gray;
+            } /*클릭시 label 배경 gray로 바뀜*/
+            input[type="text"]:focus{/*요소의 상태값은 focus*/
+                 background: yellow;
+            } /*input text란을 클릭시 배경 노란색으로 바뀌고 커서 깜빡임*/
+            .box{
+                width: 100px;
+                height: 100px;
+                background: orange;
+                transition: all 1s;/* 속성 1초만큼 지연*/
+            }
+            .box:hover{ /*박스에 마우스가 올라간 상태일때 크기 변경*/
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+        <input type="checkbox" id="check">
+        <label for="check">클릭!</label>
+        <br>
+        <input type="text" id="text">
+        <br>
+        <div class="box"></div>
+    </body>
+</html>

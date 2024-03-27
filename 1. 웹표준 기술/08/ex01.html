@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box{ /*공통적으로 너비 높이 적용  -> 사실 inline태그는 적용안됨*/
+                width:100px;
+                height: 100px;
+                margin: 50px;/*외부여백 -> inline은 좌우만 적용*/
+            }
+            .box1{
+                background: orange;
+                display: inline; /*block속성을 inline속성으로 바꿈*/
+            }
+            .box2{
+                background: blue;
+                /*display: none;*/
+                visibility: hidden; /*감춰져도 차지한 영역은 유지되고 있음*/
+            }
+            .box3{
+                background: gray;
+                /*display: block;*/
+                display: inline-block;
+            }
+            .box4{
+                background: green;
+                /*display: block;*/
+                display: inline-block;
+            }
+        </style>
+        <div class="box box1">묭1</div><!--클래스 두개 넣어쯤--><!--블록태그-->
+        <div class="box box2">묭2</div><!--클래스 두개 넣어쯤-->
+
+        <span class="box box3">묭3</span><!--인라인태그-->
+        <span class="box box4">묭4</span>
+    </body>
+</html>

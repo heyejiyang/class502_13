@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+            }
+            .box1{
+                background: orchid;
+                position: static;/*static하면 적용x*/
+                left: 100px; /*왼쪽에서 오른쪽으로 이동*/
+                top: 100px;/*상단에서 하단으로 이동*/
+            }
+            .box2{
+                background: blue;
+                position: relative;/*현재 본인 위치가 기준이 된다.*/
+                left: 100px;
+                top: 100px;
+            }
+            .box3{
+                background: yellow;
+                position: absolute;/*화면 왼쪽 상단 모서리가 기준*/
+                left: 100px;
+                top: 100px;
+            }
+            .wrap{
+                width: 600px;
+                height: 5000px;
+                border: 1px solid red;
+                position: relative; /*상위요소가 들어가게 되서 box3의 기준은 wrap의 왼쪽 상단이 된다.*/
+                margin: 200px;
+            }
+            .box4{
+                background: green;
+                position: fixed; /*뷰포트가 배치 기준*/
+                bottom: 100px;
+                right: 100px;
+            }
+        </style>
+        <div class="box box1"></div><!--박스에 왼쪽 상단이 기준-->
+        <div class="box box2"></div>
+        <div class="wrap"> <!--box3의 상위 요소-->
+            <div class="box box3"></div>
+        </div>
+        <div class="box box4"></div>
+    </body>
+</html>

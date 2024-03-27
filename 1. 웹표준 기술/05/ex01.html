@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            li{
+                background: thistle;
+            }
+            .menus{
+                background: beige /*!important*/; /*!important는 우선순위 강제적용*/
+            }
+            .menus5{
+                background: green; /*menus보다 아래쪽에 있으므로(나중에 적용되어있음) 메뉴5번의 색은 베이지가 아니라 그린이 된다*/
+            }
+            #menu4{ 
+                background: skyblue;
+            }/*태그, 클래스, id 선택자 중 id클래스가 스타일 적용 우선순위가 높다*/
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li class="menus">메뉴3</li>
+            <li class="menus" id="menu4" style="background: orange">메뉴4</li> <!--스타일속성이 우선순위 젤 높음-->
+            <li class="menus menus5" >메뉴5</li><!-- 띄어쓰기로 클래스 속성을 추가해줄 수 있다.-->
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul{
+                list-style: none; /*● 제거*/
+                margin: 0;
+                padding: 0;/*들여쓰기 공간 없애기*/
+            }
+            ul li:nth-of-type(3n+1){/*반복하면서 3개중에서 첫번째것이 선택*/
+                background: salmon;
+            }
+            ul li:nth-of-type(3n+2){/*두번째것*/
+                background: palegreen;
+            }
+            ul li:nth-of-type(3n){
+                background: aqua;
+            }
+            .flex1{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .flex1 li{
+                width: 300px;/*메뉴 하나당 300px*/
+            }
+        </style>
+        <ul class="flex1">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+            <li>메뉴5</li>
+            <li>메뉴6</li>
+            <li>메뉴7</li>
+            <li>메뉴8</li>
+            <li>메뉴9</li>
+            <li>메뉴10</li>
+            <li>메뉴11</li>
+            <li>메뉴12</li>
+        </ul>
+    </body>
+</html>

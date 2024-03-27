@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul{
+                list-style: none; /*● 제거*/
+                margin: 0;
+                padding: 0;/*들여쓰기 공간 없애기*/
+                border: 1px solid #000;
+                height: 100px;
+            }
+            ul li:nth-of-type(3n+1){/*반복하면서 3개중에서 첫번째것이 선택*/
+                background: salmon;
+            }
+            ul li:nth-of-type(3n+2){/*두번째것*/
+                background: palegreen;
+            }
+            ul li:nth-of-type(3n){
+                background: aqua;
+            }
+            .flex1{
+                display: flex;
+            }
+            .flex1 li{ /*정확하게 3등분 하기 위해서 전체를 여백으로 만들었다.*/
+                width: 0;
+            }
+            .flex1 li:nth-of-type(1){ /* flex grow를 1씩으로 하면 여백 3등분 균등하게 분배*/
+                flex-grow: 1;
+            }
+            .flex1 li:nth-of-type(2){
+                flex-grow: 1; /* 2로 바꾸면 여백 부분 4개로 나눈것 중에서 2개 차지*/
+            }
+            .flex1 li:nth-of-type(3){
+                flex-grow: 1;
+            }
+        </style>
+         <ul class="flex1">
+            <li>메뉴1</li>
+            <li>메뉴2메뉴2메뉴2메뉴2메뉴2메뉴2메뉴2메뉴2메뉴2메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+    </body>
+</html>

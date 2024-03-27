@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul{
+                list-style: none; /*● 제거*/
+                margin: 0;
+                padding: 0;/*들여쓰기 공간 없애기*/
+                border: 1px solid #000;
+                height: 100px;/*자식요소가 부모 요소에 맞게 stretch된다.*/
+                display: flex;
+            }
+            ul li:nth-of-type(3n+1){/*반복하면서 3개중에서 첫번째것이 선택*/
+                background: salmon;
+            }
+            ul li:nth-of-type(3n+2){/*두번째것*/
+                background: palegreen;
+            }
+            ul li:nth-of-type(3n){
+                background: aqua;
+            }
+            .flex1{
+                align-items: stretch;
+            }
+            .flex2{
+                align-items: flex-start;
+            }
+            .flex3{
+                align-items: flex-end;
+            }
+            .flex4{
+                align-items: center;
+            }
+           
+        </style>
+        <h1>stretch</h1>
+        <ul class="flex1">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>flex-start</h1>
+        <ul class="flex2">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>flex-end</h1>
+        <ul class="flex3">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+        
+        <h1>flex-center</h1>
+        <ul class="flex4">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+    </body>
+</html>

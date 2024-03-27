@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            span{
+                font-variant: small-caps;/*크기만 작게 표기*/
+            }
+            .font1{
+                font-style: italic; /*기울임체*/
+                color: rgb(0, 255, 0);
+            }
+            .font2{
+                font: bold italic 30px dotum;/*여러가지 스타일 한번에 적용*/
+                /*color: #00ff00;*/
+                color: #0f0;
+                
+            }
+            .box{
+                width: 200px;
+                height: 200px;
+                background: rgba(0,0,0,0.6);
+            }
+            .font3{
+                text-decoration: underline;
+            }
+            .font4{
+                text-transform: lowercase;/*대 -> 소*/
+            }
+            .font5{
+                text-transform: uppercase; /*소 -> 대*/
+            }
+            .font6{
+                text-transform: capitalize;/*앞자만 대문자로*/
+            }
+            .font7{
+                font-size: 30px;
+                text-shadow: 3px 3px 5px #222;/*가로거리 세로거리 번짐정도 색상*/
+                font-weight: bold;
+            }
+        </style>
+        ABC<span>Def</span>GHI
+        <div class="font1">ABC</div>
+        <div class="font2">happy</div>
+        <div class="font3">happy day</div>
+        <div class="font4">FONT4</div>
+        <div class="font5">hahaha</div>
+        <div class="font6">welcome</div>
+        <div class="font7">welcome7</div>
+
+
+
+        <div class="box">ABC</div>
+    </body>
+</html>

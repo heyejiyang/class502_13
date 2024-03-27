@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul{
+                 list-style-type: none; /*기본 스타일 제거 ●이거 없앰*/
+                 margin: 0;/*마진 제거 => 기본 스타일 제거*/
+                 padding: 0;/*기본스타일제거 (들여쓰기 제거)*/
+            }
+            li{
+                float: left;/*좌에서 우로 배치*//*메뉴1메뉴2메뉴3*/
+                /*float: right;/* 오른쪽 화면끝에 메뉴3메뉴2메뉴1*/
+            }
+            span.clear{
+                display: block;/*공간이 없는 태그에서는 적용이 안되기 때문에 임의로 만들어준다.*/
+                clear: left;/*float left 속성 제거*/
+            }/* 특정 선택자에 붙여서 선택하면 범위를 줄여서 선택 할 수 있다.*/
+
+            ul::after{ /*가상클래스 가상으로 요소 추가, 기본적으로 inline속성임*/
+                content: '';/*내용이 있어야 적용된다능*/
+                clear: left;
+                display: block;
+            }
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+        <!--<span class="clear"></span>-->
+        <div>내ㅐㅐㅐㅐㅐ요ㅛㅛㅛㅛㅇ...</div>
+        <!--위에 내용만 넣으면 float 속성 때문에 메뉴 하단에 들어오지않고 한줄로 배치된다. =>  clear 사용하기-->
+    </body>
+</html>

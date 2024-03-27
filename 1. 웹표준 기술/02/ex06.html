@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <figcaption>성적표</figcaption>
+        <table border="1">
+            <colgroup>
+                <col style="width: 100px">
+                <col span = "3" style="width: 250px">
+            </colgroup>
+            <caption>성적표</caption>
+            <thead>
+                <tr><!-- 1행 --><!-- th 태그가 더 적합하다.-->
+                    <th>이름</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                    <th>수학</th>
+                    <th>비고</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr><!-- 2행 -->
+                    <td align="center">홍길동</td>
+                    <td align="center">90</td>
+                    <td align="center">87</td>
+                    <td align="center">97</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr><!-- 3행 -->
+                    <td align="center">장이름</td>
+                    <td align="center">97</td>
+                    <td align="center">88</td>
+                    <td align="center">65</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td  align="center">메모</td>
+                    <td colspan="4"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>
