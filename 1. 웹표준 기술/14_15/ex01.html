@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" 
+        content="width-device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0,
+        minimum-scale=0.5"><!--모바일화면 뷰포트 지정-->
+    </head>
+    <body>
+        <style>
+            p{
+                font-size: 13px;
+            }
+
+            /*화면 크기가 300px보다 작으면 원래상태이고 밑에 적용된 범위에 들어가면 배경색이 바뀐다.*/
+            /*
+            @media screen and (min-width:300px){/*미디어 쿼리 300px이상일때
+                body{
+                    background: orange;
+                }
+            }*/
+           /* @media screen and (min-width:600px) and (max-width:1000px){
+                /*미디어 쿼리 600px이상, 1000px 이하일때
+                body{
+                    background: blue;
+                }
+
+            }*/
+            @media screen and(orientation: landscape){/*가로모드*/
+                body{
+                    background: gray;
+                }
+            }
+        </style>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et reiciendis quisquam porro deserunt, enim est ea tempore excepturi sapiente sequi fuga soluta itaque a perspiciatis, molestiae laborum asperiores quibusdam totam.
+        </p>
+    </body>
+</html>
