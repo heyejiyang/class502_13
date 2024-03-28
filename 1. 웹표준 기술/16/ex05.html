@@ -10,7 +10,7 @@
                 margin: 0;
                 padding: 0;/*들여쓰기 공간 없애기*/
                 border: 1px solid #000;
-                height: 100px;/*자식요소가 부모 요소에 맞게 stretch된다.*/
+                height: 200px;/*자식요소가 부모 요소에 맞게 stretch된다.*/
                 display: flex;
             }
             ul li:nth-of-type(3n+1){/*반복하면서 3개중에서 첫번째것이 선택*/
@@ -24,6 +24,9 @@
             }
             .flex1{
                 align-items: stretch;
+            }
+            .flex1 li:nth-last-of-type(3){
+                align-self: center;/*마지막 세번째 요소만 가운데 적용*/
             }
             .flex2{
                 align-items: flex-start;
