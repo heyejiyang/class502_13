@@ -22,7 +22,7 @@
 
 <!--
     번역 순서가 위에서 밑으로 이뤄지는데 주석코드로 실행시
-    script태그 내용을 실행할때 아직 button이 document 객체로 존재하지 않는다.
+    button 태그가 위에 있기 때문에 script부분이 아직 document객체로 바뀌지 않았다. 텍스트 그 자체로 존재할뿐 버튼이 동작하지 않게된다. 그러므로 순서를 바꾸든지 addeventlistener(이벤트가 발생한 다음에 내용 실행)를 해줘야 한다.
 
     document작업이 끝나면 DOMContentLoaded가 발생
     DOMContentLoaded 이벤트가 발생시 document객체로 변환작업 끝이란걸 알 수 있다.
