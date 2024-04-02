@@ -15,6 +15,7 @@ MyComponent.defaultProps = { //값이 없을때 기본값 설정
 
 MyComponent.propTypes = { //문자열이 아니면 경고뜨게한다.
     name: PropTypes.string,
+    num: PropTypes.number.isRequired,
 }
 
 export default MyComponent;
