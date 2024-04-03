@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';//자료형 한정 (경고를뜨게해줌)
 
-const MyComponent = ({name, num}) => {//더 짧게 매개변수로 분해해서 쓰자
+
+//함수형 컴포넌트
+const MyComponent = ({name, num,children}) => {//더 짧게 매개변수로 분해해서 쓰자
     return( 
     <>
         <div>안녕하세요!, 제 이름은 {name}입니다.</div>
         <div>제가 좋아하는 숫자는 {num}입니다. </div>
+        {children}
     </>
     );
 };
