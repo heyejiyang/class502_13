@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded",
+            window.onload = function(){
+                const buttonEl = document.getElementById("button");
+                buttonEl.onclick = function(){
+                    alert("클릭 1");
+                };
+            });
+           /* window.addEventListener("DOMContentLoaded",
+            function(){//이벤트핸들러함수
+                //클릭했을때 동작하도록해보쟈
+                const buttonEl = document.getElementById("button");
+                buttonEl.onclick = function(){
+                    alert("클릭!!");
+                }//이벤트 처리기 함수
+                buttonEl.onclick = function(){
+                    alert("클릭!!22");
+                }// 함수객체의 주소에 얘만 대입되게 되어서 클릭1은 나오지않음 
+
+            });*/
+        </script>
+        <button type="button" id="button">클릭</button>
+        <script>
+            window.onload = function(){
+                console.log("다른로직...");
+            };//첫번째 onload의 이벤트 핸들러가 하단의 onload로 대체되었기 때문에 위에 버튼 명령은 실행되지않는다.
+        </script>
+    </body>
+
+</html>

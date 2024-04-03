@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <!--클래스 추가방식-->
+        <style>
+            .box{
+                width: 150px;
+                height: 150px;
+                background: orangered;
+            }
+            .box.on{
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded",function(){
+                const boxEl = document.querySelector(".box");
+
+                //마우스 올렸을때 이벤트 발생 -- 확대  -> box on
+                boxEl.addEventListener("mouseenter",function(){
+                    this.classList.add("on");
+                });
+
+                //마우스가 요소에서 빠져나갔을때
+                boxEl.addEventListener("mouseleave",function(){
+                    this.classList.remove("on");
+                });
+
+                //키보드를 눌렀다가 뗄때 이벤트 발생
+                const textEl = document.getElementById("text");
+                textEl.addEventListener("keyup",function(e){
+                    console.log(e)
+                    console.log("keyup",this.value);
+                })
+
+            });
+        </script>
+        <div class="box"></div>
+        <input type="text" id="text">
+    </body>
+</html>

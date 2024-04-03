@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded",function(){
+                const linkEl = document.getElementById("link");
+                linkEl.addEventListener("click",function(e){
+                    e.preventDefault();//기본동작취소 -> 링크이동은하지않는다
+                    console.log("클릭");
+                    console.log('this',this);//this는 이벤트가 구현된 document객체로 주소가 바뀌어있다. //this는 이벤트가 바인딩된 요소를 가리킨다.
+                    this.style="background: orange";
+                });
+                const divEl = document.getElementById("div");
+                divEl.addEventListener("click",function(e){
+                    console.log("e.target",e.target);//클릭한요소, 이벤트가 바인딩된 요소
+                    console.log("e.currentTarget",e.currentTarget);//이벤트 핸들러가 등록된 요소
+                });
+            });
+        </script>
+        <a href="http://www.naver.com" id="link">네이버</a>
+        <br>
+        <div id="div">
+            <span>클릭</span>
+        </div>
+
+    </body>
+</html>
