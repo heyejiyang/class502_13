@@ -26,23 +26,23 @@
 
                 //이벤트구현/이벤트 바인딩
                 box1.addEventListener("click",function(){
-                    console.log("BOX1");
+                    console.log("BOX1"); //box1출력
                 });
                 box2.addEventListener("click",function(){
-                    console.log("BOX2");
+                    console.log("BOX2"); //box2, box1 출력
                 },);
                 box3.addEventListener("click",function(e){
                     e.stopPropagation(); //이벤트 전파 취소
-                    console.log("BOX3");
+                    console.log("BOX3"); //box3만 출력됨
                 });
 
             });
         </script>
-        <div class="box box1">
+        <div class="box box1"><!--왕부모-->
             Box1
-            <div class="box box2">
+            <div class="box box2"><!--부모 겸 자식-->
                 Box2
-                <div class="box box3">
+                <div class="box box3"><!--자식-->
                     Box3
                 </div>
             </div>

@@ -22,12 +22,13 @@
 
                 //마우스 올렸을때 이벤트 발생 -- 확대  -> box on
                 boxEl.addEventListener("mouseenter",function(){
-                    this.classList.add("on");
+                    this.classList.add("on"); //this는 이벤트가 발생한 요소인 box를 가리킨다
                 });
 
                 //마우스가 요소에서 빠져나갔을때
                 boxEl.addEventListener("mouseleave",function(){
                     this.classList.remove("on");
+                    //여기서도 "this"는 이벤트가 발생한 .box 요소를 가리킨다. 즉, 마우스가 .box 요소를 벗어났을 때, 해당 요소를 가리킴
                 });
 
                 //키보드를 눌렀다가 뗄때 이벤트 발생
