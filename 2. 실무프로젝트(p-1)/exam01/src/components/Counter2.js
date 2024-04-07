@@ -7,6 +7,7 @@ class Counter extends Component{
     //state값 내부정의, 사용할 값 객체형태로
     state = {
         number: 0,
+        //number속성에 0이라는 숫자값을 할당해준것
     };
     render(){
         const plus = () => this.setState({number: number + 1});
@@ -15,6 +16,8 @@ class Counter extends Component{
 
         //비구조화할당
         const { number } = this.state;
+        //this.state 객체에서 number 속성을 추출하여 number 변수에 할당
+        //this.state.number로 직접 접근하는 대신에 비구조화 할당을 사용하여 number 변수에 해당 값이 할당
         
         return(
             <>

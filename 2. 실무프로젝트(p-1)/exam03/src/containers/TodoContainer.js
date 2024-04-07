@@ -30,6 +30,7 @@ const TodoContainer = () => {
 
     //새로운 배열 객체를 만들어야 할일이 추가된다 주소가!! 달라져야 달라짐
     const newItems = items.concat({
+      //items 배열에 새로운 객체를 추가한 새로운 배열을 생성하는 것
       id: id.current,
       title: todo.trim(), //공백제거 trim
       done: false,

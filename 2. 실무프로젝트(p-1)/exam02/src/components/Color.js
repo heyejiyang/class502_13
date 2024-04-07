@@ -11,9 +11,9 @@ class Color extends Component {
     //     console.log(this);
     // }
     //화살표함수
-    const changeColor = (color) => this.setState({ color }); //Color
-    const changeSubColor = (color) =>
-      this.setState((prevState) => ({ ...prevState, subColor: color })); //새로운객채 만들때 ...전개해서 복사
+    const changeColor = (top) => this.setState({ color: top }); //Color
+    const changeSubColor = (bottom) =>
+      this.setState((prevState) => ({ ...prevState, subColor: bottom })); //새로운객채 만들때 ...전개해서 복사
 
     const { color, subColor } = this.state;
     return (

@@ -4,14 +4,29 @@ const JoinForm = (props) => {
   //일괄 업데이트
   const [form, setForm] = useState({}); //form은 현재 상태를 나타내는 변수이고, setForm은 해당 상태를 업데이트할 수 있는 함수입니다.
   let userIdEl = useRef();
+  /**useRef 훅을 사용하여 userIdEl이라는 Ref를 생성
+   * 이 Ref는 나중에 사용자 아이디 입력 필드를 참조하기 위해 사용
+   * useRef를 사용하면 ref 속성을 통해 해당 DOM 요소에 접근
+   * userIdEl이라는 Ref를 사용하여 입력 필드에 접근하고, 해당 입력 필드에 포커스를 줄 수 있습니다.
+   */
 
   useEffect(() => {
     //userIdEl.focus();
-    //console.log(userIdEl.current);
+    console.log(userIdEl.current);
     userIdEl.current.focus();
+    /**useRef를 사용하여 Ref를 생성하고, current 속성을 통해 해당 DOM 요소에 접근
+     * current 속성은 useRef를 사용하여 참조한 대상에 대한 현재 값
+     */
   }, [userIdEl]);
+  /**
+   * useEffect 훅에서 대괄호([])는 의존성 배열(dependency array)을 나타냅니다. 이 배열은 useEffect의 콜백 함수가 실행되어야 하는 조건을 지정합니다.
+   * 대괄호가 비어있는 경우([]), 콜백 함수는 컴포넌트가 처음 마운트될 때 한 번만 실행
+   * [userIdEl]은 userIdEl이 변경될 때마다 useEffect의 콜백 함수가 실행되어야 함을 의미
+   * 그러나 userIdEl은 useRef를 사용하여 생성된 객체이며, 이 객체 자체는 변경되지 않습니다. 따라서 실제로는 userIdEl.current이 변경될 때마다 useEffect의 콜백 함수가 실행됩니다.
+   * useEffect의 콜백 함수는 컴포넌트가 처음으로 렌더링될 때 한 번 실행되고, 그 후에는 실행되지 않습니다.
+   */
 
-  const onChange = (e) => {
+  const onChange = (e) => {//입력필드 값이 변경될때 호출되는 콜백함수
     /*
     form[e.currentTarget.name] = e.currentTarget.value;
     //여기서 form은 객체이며, e.currentTarget.name은 속성의 이름을 나타냅니다. 
@@ -37,6 +52,8 @@ const JoinForm = (props) => {
     const name = e.currentTarget.name;
     const value = e.currentTarget.value;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
+    //해당 입력 필드의 name 속성을 키로 하고 사용자가 입력한 값을 값으로 하는 새로운 객체를 생성하여 form 상태를 업데이트
+    //객체의 속성 이름을 동적으로 설정하기 위해 대괄호 표기법(computed property name)을 사용
   };
 
   //함수 폼이 제출될때 호출되는 함수
@@ -60,7 +77,7 @@ const JoinForm = (props) => {
             onChange={onChange}
             value={form.userId ?? ''}
             //ref={(ref) => (userIdEl = ref)} //돔선택
-            ref={userIdEl} //userRef사용
+            ref={userIdEl} //userIdel이라는 ref를 사용하여 input요소에 접근
           />
         </dd>
       </dl>

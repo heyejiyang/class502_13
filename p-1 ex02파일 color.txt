@@ -1,0 +1,16 @@
+p-1 ex02파일 color
+const changeColor = (top) => this.setState({ color: top }); //Color
+    const changeSubColor = (bottom) =>
+      this.setState((prevState) => ({ ...prevState, subColor: bottom })); 
+
+
+
+join 
+useEffect(() => {
+    //userIdEl.focus();
+    console.log(userIdEl.current);
+    userIdEl.current.focus();
+    /**useRef를 사용하여 Ref를 생성하고, current 속성을 통해 해당 DOM 요소에 접근
+     * current 속성은 useRef를 사용하여 참조한 대상에 대한 현재 값
+     */
+  }, [userIdEl]);
