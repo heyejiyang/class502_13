@@ -26,7 +26,8 @@ const JoinForm = (props) => {
    * useEffect의 콜백 함수는 컴포넌트가 처음으로 렌더링될 때 한 번 실행되고, 그 후에는 실행되지 않습니다.
    */
 
-  const onChange = (e) => {//입력필드 값이 변경될때 호출되는 콜백함수
+  const onChange = (e) => {
+    //입력필드 값이 변경될때 호출되는 콜백함수
     /*
     form[e.currentTarget.name] = e.currentTarget.value;
     //여기서 form은 객체이며, e.currentTarget.name은 속성의 이름을 나타냅니다. 
