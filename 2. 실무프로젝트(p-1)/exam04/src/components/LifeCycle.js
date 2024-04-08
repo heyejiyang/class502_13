@@ -1,12 +1,12 @@
 import { Component } from 'react';
-
+/**클래스형 컴포넌트 */
 class LifeCycle extends Component {
   state = {
     number: 0,
   };
 
   constructor(props) {
-    super(props);
+    super(props); //상위쪽인 Component에서 props 받아옴
 
     console.log('constructor');
   }
@@ -20,7 +20,7 @@ class LifeCycle extends Component {
     return null;
   }
 
-  shouldComponentUpdate(props, state) {
+  shouldComponentUpdate(props, state) { //반환값을가지고 렌더링 여부설정
     //return state.number % 3 !== 0;
     return true;
     /*
@@ -33,7 +33,7 @@ class LifeCycle extends Component {
     */
   }
 
-  componentDidMount() {
+  componentDidMount() { //한번만 호출
     console.log('componentDidMount');
   }
 
@@ -43,7 +43,7 @@ class LifeCycle extends Component {
     return { value: 100 };
   }
 
-  componentDidUpdate(props, state, snapshot) {
+  componentDidUpdate(props, state, snapshot) { //갱신된때마다 매번 호출
     console.log('componentDidUpdate');
     console.log('snapshot', snapshot);
   }
