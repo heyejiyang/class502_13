@@ -1,20 +1,37 @@
-/**할 일 기록 컴포넌트 양식/ 프리젠테이셔널 컴포넌트 */
+import { useEffect } from 'react';
+import { MdOutlineAdd } from 'react-icons/md';
 
-import { MdOutlineAdd } from 'react-icons/md'; //플러스 아이콘
+const AddTodo = ({ onSubmit, onChange, todo, message }) => {
+  useEffect(() => {
+    // componentDidMount(), componentDidUpdate() - todo값의 변화에 의한 레더링
+    console.log('todo, message 값 변경 - 렌더링 후'); // (2)
 
-const AddTodo2 = ({ onSubmit, state, dispatch }) => {
+    return () => {
+      console.log('뒷정리 함수... / update'); // (1)
+    };
+  }, [todo, message]); // [...] // 변화 감지 기준
+
+  useEffect(() => {
+    console.log('마운트시 한번만 호출'); // componentDidMount()
+    // DOMContentLoaded 비슷 (동일 X)
+  }, []);
+
+  /*
+  useEffect(() => { // componentDidMount(), componentDidUpdate() - message
+    console.log("message 값 변경");
+  }, [message]);
+  */
+
   return (
     <form onSubmit={onSubmit} autoComplete="off">
-      <input
-        type="text"
-        value={state.todo}
-        onChange={dispatch({ type: 'INPUT' })}
-      />
+      <input type="text" value={todo ?? ''} onChange={onChange} />
       <button type="submit">
         <MdOutlineAdd />
       </button>
+
+      {message && <div>{message}</div>}
     </form>
-  ); //jsx문법 소괄호!
+  );
 };
 
-export default AddTodo2;
+export default AddTodo;
