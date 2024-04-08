@@ -1,0 +1,41 @@
+@import './utils.scss';
+
+.ScssComponent{
+    display: flex;
+    .box {
+        width: 100px;
+        height: 100px;
+
+        //내부에서 선택할때는 &로 쓸수있다.(현재요소를 동일하게 선택한다.)
+        //& 기호는 부모 선택자(parent selector)를 참조하는데 사용
+        //&는 .box를 참조
+        &.red{// = .box.red, .red는 .box의 하위요소임
+            background: $red;
+            @include square(1);//50 *50 //믹스인을 호출하고 해당 믹스인의 스타일을 포함하는 것
+        } 
+        &.orange{
+            background: $orange;
+            @include square(2);
+        } 
+        &.yellow{
+            background: $yellow;
+            @include square(3);
+        } 
+        &.green{
+            background: $green;
+            @include square(4);
+        } 
+        &.blue{
+            background: $blue;
+            @include square(3);
+        } 
+        &.indigo{
+            background: $indigo;
+            @include square(2);
+        } 
+
+        &:hover{ //:hover는 마우스 포인터가 요소 위에 올라가 있는 동안의 상태
+            background: #000;
+        }
+    }
+}

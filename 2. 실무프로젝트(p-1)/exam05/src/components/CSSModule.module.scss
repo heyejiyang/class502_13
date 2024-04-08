@@ -1,0 +1,16 @@
+.wrapper{ /*일반명칭의 클래스명*/
+    padding: 20px;
+    background: black;
+    color: white;
+    font-size: 2rem;
+
+    .highlight{
+        color: orange;
+        font-weight: bold;
+    }
+
+}
+
+:global .commonColor{ //글로벌로 하면 commonColor라는 클래스로 인식한다.
+    color: blue;
+}

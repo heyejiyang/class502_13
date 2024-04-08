@@ -1,0 +1,12 @@
+$red: #fa5252;
+$orange: #fd7314;
+$yellow: #fcc419;
+$green: #40c057;
+$blue: #339af0;
+$indigo: #5c7cfa;
+
+@mixin square($size){//믹스인은 재사용 가능한 CSS 코드 블록을 정의하는 데 사용
+    $calculated: 50px * $size;
+    width: $calculated;
+    height: $calculated;
+}//$size를 이용하여 너비와 높이가 같은 정사각형의 스타일을 생성
