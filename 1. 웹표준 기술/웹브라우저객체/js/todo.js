@@ -6,13 +6,16 @@ const todo = {
     // 저장값 조회 -> 스케줄 완성
     const jsonData = localStorage.getItem("todos");
     const todos = jsonData ? JSON.parse(jsonData) : []; //값 비어있을때 빈값
-    console.log(todos);
+    this.data = todos;
+    //console.log(todos);
+    this.id = todos.length + 1;
 
-    const itemEl = document.querySelector(".items");
+    const itemsEl = document.querySelector(".items");
 
     for (const item of todos) {
       //Symbol.iterator / 반복자패턴/ 반복이 필요한 객체
       const liEl = this.getItem(item.title);
+      liEl.dataset.id = item.id;
       itemsEl.appendChild(liEl);
     }
   },
@@ -47,11 +50,13 @@ const todo = {
     });
 
     this.save();
+
+    liEl.dataset.id = id;
   },
   save() {
     localStorage.setItem("todos", JSON.stringify(this.data));
   },
-  getItem(id, subject) {
+  getItem(subject) {
     const liEl = document.createElement("li"); //요소추가
     liEl.appendChild(document.createTextNode(subject)); //뒤에 추가
 
@@ -67,6 +72,14 @@ const todo = {
 
       //삭제버튼 누르면 해당 목록 삭제
       itemsEl.removeChild(liEl);
+
+      const id = liEl.dataset.id;
+      //localStorage에 저장된 데이터도 삭제 (실데이터 삭제)
+      const index = todo.data.findIndex((item) => item.id == id);
+      if(index !== -1){
+        todo.data.splice(index,1);
+        todo.save();
+      }
     });
 
     return liEl;
