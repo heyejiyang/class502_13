@@ -11,6 +11,10 @@
 
 }
 
+.menus{
+    background: gray;
+}
+
 :global .commonColor{ //글로벌로 하면 commonColor라는 클래스로 인식한다.
     color: blue;
 }
