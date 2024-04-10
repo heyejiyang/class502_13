@@ -68,17 +68,12 @@ const TodoContainer = () => {
       );
       setItems(newItems);
       */
-    // setItems((prevItems) =>
-    //   prevItems.map((item) =>
-    //     item.id === id ? { ...item, done: !item.done } : item,
-    //   ),
-    // );
-
-    setItems(
-      produce((draft) =>
-        draft.forEach((item) => item.id === id && (item.done = !item.done)),
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, done: !item.done } : item,
       ),
     );
+
   }, []);
 
   // 할일 목록 제거
