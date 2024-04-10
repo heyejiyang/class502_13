@@ -30,7 +30,7 @@ const Average = () => {
    */
   const onChange = useCallback(
     (e) =>
-      setNum(e.currentTarget.value !== NaN ? Number(e.currentTarget.value) : 0),
+      setNum(e.currentTarget.value !== isNaN ? Number(e.currentTarget.value) : 0),
     [],
   ); //현재 입력된 값이 NaN이 아니면 해당 값을 숫자로 변환하고, NaN이면 0으로 설정
 
