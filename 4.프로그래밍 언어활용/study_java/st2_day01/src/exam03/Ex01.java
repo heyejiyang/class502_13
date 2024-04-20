@@ -5,5 +5,6 @@ public class Ex01 {
         Order order = new Order();
         order.buy();
         order.sell();
+
     }
 }

@@ -9,6 +9,5 @@ public class Order implements Buyer,Seller{
     @Override
     public void sell() {
         System.out.println("판매");
-
     }
 }
