@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537e2b95-c801-47f2-ba58-466b4f2eb0af" name="Changes" comment="정규표현식">
-      <change afterPath="$PROJECT_DIR$/src/exam03/Ex01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam03/Ex02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam03/Ex03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="537e2b95-c801-47f2-ba58-466b4f2eb0af" name="Changes" comment="String클래스 수업" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,13 +184,22 @@
       <option name="project" value="LOCAL" />
       <updated>1714028903681</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="String클래스 수업">
+      <option name="closed" value="true" />
+      <created>1714032064947</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714032064947</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="유용한클래스 수업" />
     <MESSAGE value="점유표현식" />
     <MESSAGE value="정규표현식" />
-    <option name="LAST_COMMIT_MESSAGE" value="정규표현식" />
+    <MESSAGE value="String클래스 수업" />
+    <option name="LAST_COMMIT_MESSAGE" value="String클래스 수업" />
   </component>
 </project>
