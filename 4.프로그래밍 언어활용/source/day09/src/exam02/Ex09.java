@@ -19,7 +19,7 @@ public class Ex09 {
         //\d{3,4} 숫자패턴 3자리에서4자리
         //\d{4} 네자리
         //끝나는쪽에 4자리로 끝난다고 알려줘야한다 $ 끝나는 패턴
-        // 전화번호 입력시 중간에 - 표시 대신 다른거 해줄때 \D*
+        // 전화번호 입력시 중간에 - 표시 대신 다른거 해줄때 \D* : 숫자 다음 문자가 있어도 되고 없어도 된다
         Pattern pattern = Pattern.compile("^01[016]\\D*\\d{3,4}\\D*\\d{4}$");
         Matcher matcher = pattern.matcher(mobile);
         boolean matched = matcher.find();
