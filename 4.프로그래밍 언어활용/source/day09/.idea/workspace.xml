@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537e2b95-c801-47f2-ba58-466b4f2eb0af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../day08/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day08/src/mTEST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day08/src/tt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day09.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam01/Ex01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam01/Ex02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam01/Ex03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam01/Ex04.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex04.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex05.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex06.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex07.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex08.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exam02/Ex09.java" afterDir="false" />
-    </list>
+    <list default="true" id="537e2b95-c801-47f2-ba58-466b4f2eb0af" name="Changes" comment="유용한클래스 수업" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,6 +154,19 @@
       <option name="presentableId" value="Default" />
       <updated>1714004194708</updated>
     </task>
+    <task id="LOCAL-00001" summary="유용한클래스 수업">
+      <option name="closed" value="true" />
+      <created>1714021264380</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714021264380</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="유용한클래스 수업" />
+    <option name="LAST_COMMIT_MESSAGE" value="유용한클래스 수업" />
   </component>
 </project>
