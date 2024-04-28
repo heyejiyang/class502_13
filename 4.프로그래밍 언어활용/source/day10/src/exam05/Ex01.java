@@ -11,11 +11,11 @@ public class Ex01 {
         Apple apple = appleBox.getItem();
         System.out.println(apple.get());
 
-        Box<Grape> grapeBox = new Box<>(); //Grape만 들어가는 박스
-        grapeBox.setItem(new Grape());
+        //Box<Grape> grapeBox = new Box<>(); //Grape만 들어가는 박스
+        //grapeBox.setItem(new Grape());
 
-        Grape grape = grapeBox.getItem();
-        System.out.println(grape.get());
+        //Grape grape = grapeBox.getItem();
+        //System.out.println(grape.get());
 
 
     }
