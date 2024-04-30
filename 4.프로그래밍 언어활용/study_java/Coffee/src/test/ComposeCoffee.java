@@ -9,7 +9,7 @@ public class ComposeCoffee implements Cafe{
         int price = getPrice(menu);
 
         if (price != -1) {
-            System.out.printf("%s는 %s에서 %s를 주문했습니다. 가격은 %d원입니다.%n", person.getName(), name, menu, price);
+            System.out.printf("%s은(는) %s에서 %s를 주문했습니다. 가격은 %d원입니다.%n", person.getName(), name, menu, price);
         } else {
             System.out.println("존재하지 않는 음료입니다.");
         }
