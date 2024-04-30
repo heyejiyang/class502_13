@@ -5,11 +5,9 @@ public class Ex01 {
         MegaCoffee m1 = new MegaCoffee();
         ComposeCoffee c1 = new ComposeCoffee();
 
-
-        p1.Mega_Cafe(m1);
-        m1.showInfo();
-
-        p2.Compose_Cafe(c1);
-        c1.showInfo();
+        p1.visitCafe();
+        p2.visitCafe();
+        p1.mega_Cafe(m1);
+        p2.compose_Cafe(c1);
     }
 }

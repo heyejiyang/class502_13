@@ -7,13 +7,13 @@ public class ComposeCoffee {
         if(menu.equals("아메리카노")){
             price = 1500;
             this.menu = "아메리카노";
+            System.out.printf("%s의 %s는 %d원 입니다.%n",this.name, this.menu,this.price);
         }else if(menu.equals("라테")){
             price = 2600;
             this.menu = "라테";
+            System.out.printf("%s의 %s는 %d원 입니다.%n",this.name, this.menu,this.price);
+        }else {
+            System.out.println("존재하지 않는 음료입니다.");
         }
-    }
-
-    void showInfo(){
-        System.out.printf("%s의 %s는 %d원 입니다.",this.name, this.menu,this.price);
     }
 }
