@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b0aa0c3-ec4b-42a5-970d-769a321aed37" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day14.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/EX05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex06.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex07.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam01/Ex08.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "heyejiyang"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/heyejiyang/class502_13.git",
+    "accountId": "9b6baa6a-503f-4139-992c-341988e96f36"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2ftAQR4qQvNFH6H1ur9kOW2C4Pt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EX05.executor": "Run",
+    "Application.Ex02.executor": "Run",
+    "Application.Ex04.executor": "Run",
+    "Application.Ex07.executor": "Run",
+    "Application.Ex08.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Ex08">
+    <configuration name="EX05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam01.EX05" />
+      <module name="day14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam01.Ex02" />
+      <module name="day14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex04" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam01.Ex04" />
+      <module name="day14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex07" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam01.Ex07" />
+      <module name="day14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex08" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam01.Ex08" />
+      <module name="day14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Ex08" />
+        <item itemvalue="Application.Ex07" />
+        <item itemvalue="Application.EX05" />
+        <item itemvalue="Application.Ex04" />
+        <item itemvalue="Application.Ex02" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b0aa0c3-ec4b-42a5-970d-769a321aed37" name="Changes" comment="" />
+      <created>1714609988187</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714609988187</updated>
+    </task>
+    <servers />
+  </component>
+</project>
