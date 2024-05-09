@@ -36,13 +36,6 @@ public class CalendarTest {
                 List<String> lastDay = (List<String>) calendarData.get("lastDay");
                 List<String> yoils = (List<String>) calendarData.get("yoils");
 
-//                for (int i = 0; i < days.size(); i++) {
-//                    System.out.println("Day: " + days.get(i) + ", Date: " + dates.get(i) + ", Yoil: " + yoils.get(i));
-//                }
-//                for (int i = 0; i < days.size(); i++) {
-//                    System.out.println("Day: " + days.get(i) + ", Date: " + lastDay.get(i) + ", Yoil: " + yoils.get(i));
-//                }
-
                 int k = 1;
                 for (int i = 0; i < days.size(); i++) {
                     System.out.print(days.get(i)+"  ");
