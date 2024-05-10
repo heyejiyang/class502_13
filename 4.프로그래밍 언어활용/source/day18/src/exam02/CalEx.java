@@ -40,7 +40,7 @@ public class CalEx {
 
     // 해당 달에 시작하는 1일이 몇요일인지 알아야한다
     // 해당 달에 끝나는 날짜를 알아야한다 28일, 29일, 30일, 31일
-    public static Object getCalendar(int year, int month){
+    public static void getCalendar(int year, int month){
 
         //년 월을 알고있으면 시작일자를 1로 고정
         LocalDate startDate = LocalDate.of(year, month,1);
@@ -61,7 +61,6 @@ public class CalEx {
             if(n%7==0) System.out.println(); //토요일 지나면 줄개행
         }
         System.out.println();
-        return lastDay;
     }
 
 }
