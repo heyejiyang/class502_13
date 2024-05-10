@@ -1,0 +1,7 @@
+SELECT * FROM EMP;
+
+SELECT * FROM EMP WHERE DEPTNO != 20;
+
+--문자일때는 작은따옴표를 입력해줘야한다.
+SELECT * FROM EMP WHERE JOB = 'CLERK';
+

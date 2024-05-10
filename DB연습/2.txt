@@ -1,0 +1,8 @@
+-- ASC 생략 가능
+SELECT * FROM EMP ORDER BY DEPTNO ASC;
+
+--내림차순
+SELECT * FROM EMP ORDER BY DEPTNO DESC;
+
+-- 부서번호 별 내림차순 정렬, 부서 내에서는 급여별 오름차순 정렬
+SELECT * FROM EMP ORDER BY DEPTNO DESC, SAL ASC;

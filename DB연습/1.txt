@@ -1,0 +1,7 @@
+-- 직책 + 부서
+SELECT DISTINCT JOB, DEPTNO FROM EMP;
+
+ --SQL 내에서 연산 가능/ 연봉 출력 SAL * 12
+SELECT E.EMPNO, E.ENAME, E.JOB, E.SAL * 12 연봉 FROM EMP E;  
+
+SELECT * FROM EMP;
