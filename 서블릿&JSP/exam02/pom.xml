@@ -19,5 +19,13 @@
       <version>1.18.32</version>
       <scope>provided</scope>
     </dependency>
+
+
   </dependencies>
+
+  <build>
+    <plugins>
+
+    </plugins>
+  </build>
 </project>
