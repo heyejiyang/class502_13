@@ -1,0 +1,64 @@
+CREATE OR REPLACE VIEW VM_EMP
+AS (SELECT E.EMPNO, E.ENAME, E.JOB, E.SAL, D.*, S.*
+		FROM EMP E
+			JOIN DEPT D ON E.DEPTNO = D.DEPTNO
+			JOIN SALGRADE S ON E.SAL
+			BETWEEN S.LOSAL AND S.HISAL
+		WHERE E.DEPTNO IN (10,20));
+		
+SELECT * FROM USER_VIEWS;
+	
+SELECT * FROM VM_EMP WHERE DEPTNO IN (10,20);
+
+
+DROP VIEW VM_EMP;
+
+
+
+
+SELECT ROWNUM, E.* FROM EMP E; --레코드 순번
+
+
+SELECT ROWNUM, E.* FROM EMP E ORDER BY SAL DESC;
+
+--인라인 뷰로 정렬시키기
+-- 번호 안섞이게 인라인뷰 형태 사용
+SELECT ROWNUM, E.* FROM(SELECT * FROM EMP ORDER BY SAL DESC) E
+	WHERE ROWNUM <=3; --조회할 레코드 개수 한정시키기
+
+
+SELECT ROWNUM, E.* FROM(SELECT * FROM EMP ORDER BY SAL DESC) E
+	WHERE ROWNUM >= 3 AND ROWNUM <10;
+
+
+SELECT * 
+FROM (SELECT ROWNUM NUM, E1.* 
+	FROM (SELECT * FROM EMP ORDER BY SAL DESC) E1) E
+WHERE E.NUM >= 3 AND E.NUM <10;
+
+
+인라인뷰로 정렬시키기--------------
+--SAL이 많은 순서대로 정렬되었지만 ROWNUM이 최초의 정렬 순서대로 나와있고
+-- 제대로 정렬되지않고있다.
+SELECT ROWNUM, E.* FROM EMP E ORDER BY SAL DESC;
+
+-- 급여가 많은 직원 3명 조회
+-- 가상의 테이블 인라인뷰로 만들어서 정렬시키기
+SELECT ROWNUM, E.* FROM (SELECT * FROM EMP ORDER BY SAL DESC) E; --순번 재구성
+
+SELECT ROWNUM, E.* FROM (SELECT * FROM EMP ORDER BY SAL DESC) E
+WHERE ROWNUM <=3; -- 순서번호 3번까지만 출력
+
+--범위 검색 원하는 순서번호대만 출력 3~9
+SELECT ROWNUM, E.* FROM (SELECT * FROM EMP ORDER BY SAL DESC) E
+WHERE ROWNUM >=3 AND ROWNUM <10;
+--이렇게 하면 안나옴 ROWNUM >=3 -> 이상은 조회가 안됨/ ROWNUM <10 이하는 된다
+
+--ROWNUM 자체를 인라인뷰로 만들어줘서 하자
+--인라인뷰 안에 인라인뷰가 있는 구조
+-- 3번부터 9번까지 정렬된 형태 출력
+SELECT * 
+FROM (SELECT ROWNUM NUM, E1.* 
+	FROM (SELECT * FROM EMP ORDER BY SAL DESC) E1) E
+WHERE E.NUM >= 3 AND E.NUM <10;
+--RONUM도 별칭주기
