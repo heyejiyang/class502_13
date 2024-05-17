@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Book implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     private int isbn; //도서 번호
     private String title; //도서명
     private transient String author; //저자
