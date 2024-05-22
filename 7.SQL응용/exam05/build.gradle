@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.choongang'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+
+ext{
+    lbversion = '1.18.32' //전역변수, 모든 영역 내에서 접근 가능
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def version = '1.18.32' //지역변수로 정의
+
+    compileOnly "org.projectlombok:lombok:$version"
+    testCompileOnly "org.projectlombok:lombok:$version"
+    annotationProcessor "org.projectlombok:lombok:$version"
+    testAnnotationProcessor "org.projectlombok:lombok:$version"
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
