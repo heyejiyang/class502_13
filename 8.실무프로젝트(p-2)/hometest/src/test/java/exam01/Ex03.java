@@ -17,15 +17,15 @@ public class Ex03 {
     void test1(){
         BoardMapper mapper = session.getMapper(BoardMapper.class);
         Board board = Board.builder()
-                .seq(System.currentTimeMillis())
-                .poster("USER10")
-                .subject("게시글제목2")
-                .content("게시글 내용2")
+                .poster("USER"+System.currentTimeMillis())
+                .subject("게시글제목1")
+                .content("게시글 내용4")
                 .build();
 
        // int cnt = session.insert("mappers.BoardMapper.register",board);
-        int cnt = mapper.register(board);
+        int cnt = mapper.register2(board);
         System.out.println(cnt);
+        System.out.println(board);
     }
 
     @Test
@@ -39,6 +39,16 @@ public class Ex03 {
                 .build();
 
         int cnt = mapper.modify(board);
+        System.out.println(cnt);
+    }
+
+    //삭제
+    @Test
+    void test3(){
+        Board board = Board.builder()
+                .seq(1)
+                .build();
+        int cnt = session.delete("mappers.BoardMapper.delete",board);
         System.out.println(cnt);
     }
 }

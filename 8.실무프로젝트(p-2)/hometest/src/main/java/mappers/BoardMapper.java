@@ -19,4 +19,5 @@ public interface BoardMapper {
     int register2(Board board);
 
     int modify(Board board);
+    int delete(String poster);
 }

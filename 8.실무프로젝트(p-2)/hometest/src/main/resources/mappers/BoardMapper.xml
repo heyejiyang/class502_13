@@ -14,20 +14,59 @@
     <select id="getList" resultMap="boardMap">
         SELECT * FROM BOARD
     </select>
+
+        <select id="getList3" resultMap="boardMap">
+            <bind name="P_subject" value="'%' + _parameter.getSubject() + '%'" />
+            <bind name="P_content" value="'%' + _parameter.getContent() + '%'" />
+            SELECT * FROM BOARD
+            <where>
+                <if test="poster != null">
+                    POSTER = #{poster}
+                </if>
+                <if test="subject != null">
+                    AND SUBJECT LIKE #{P_subject}
+                </if>
+                <if test="content != null">
+                    AND CONTENT LIKE #{P_content}
+                </if>
+            </where>
+        </select>
+
     <insert id="register">
         INSERT INTO BOARD(SEQ, POSTER, SUBJECT, CONTENT)
             VALUES(SEQ_BOARD.NEXTVAL,#{poster},#{subject},#{content})
     </insert>
+
+    <insert id="register2">
+        <selectKey keyProperty="seq" order="BEFORE" resultType="long"><!--insert쿼리 수행 전 수행 -> before-->
+            SELECT SEQ_MEMBER.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO BOARD(SEQ, POSTER, SUBJECT, CONTENT)
+        VALUES(#{seq},#{poster},#{subject},#{content})
+    </insert>
+<!--    <update id="modify">-->
+<!--        UPDATE BOARD-->
+<!--            SET-->
+<!--                POSTER = #{poster},-->
+<!--                SUBJECT = #{subject},-->
+<!--                CONTENT = #{content},-->
+<!--                MOD_DT = SYSDATE-->
+<!--            WHERE SEQ = #{seq}-->
+<!--    </update>-->
     <update id="modify">
         UPDATE BOARD
-            SET
-                POSTER = #{poster},
+        <set>
+            <if test="subject != null">
                 SUBJECT = #{subject},
+            </if>
+            <if test="content != null">
                 CONTENT = #{content},
-                MOD_DT = SYSDATE
-            WHERE SEQ = #{seq}
+            </if>
+        </set>
+        WHERE POSTER = #{poster}
     </update>
+
     <delete id="delete">
-        DELETE FROM BOARD WHERE SEQ = #{seq}
+        DELETE FROM BOARD WHERE POSTER = #{poster}
     </delete>
 </mapper>
