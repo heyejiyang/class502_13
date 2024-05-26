@@ -45,7 +45,7 @@ public class Ex01 {
         try(Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement()){//Statement 객체로 sql문 실행 할수있다.
 
-            String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE) VALUES (SEQ_MEMBER.NEXTVAL, 'USER01', '123456', '사용자01', '01000000000')";
+            String sql = "INSERT INTO BOARD (SEQ, POSTER, SUBJECT, CONTENT) VALUES (SEQ_MEMBER.NEXTVAL, 'USER04', '게시글제목4', '게시글 내용4')";
 
             int cnt = stmt.executeUpdate(sql);
             System.out.println(cnt);
