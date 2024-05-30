@@ -1,0 +1,4 @@
+환경변수
+java 자바파일.class -D 변수명=값 -D변수명 = 값
+
+String System.getenv(변수명)
