@@ -1,7 +1,6 @@
 package tests;
 
 import global.exceptions.ValidationException;
-import global.validators.Validator;
 import member.controllers.RequestJoin;
 import member.services.JoinService;
 import member.validators.JoinValidator;
@@ -135,7 +134,7 @@ public class JoinServiceTest { //테스트 한번에 실행
     void requiredFieldEachTest(RequestJoin form, String keyword) {
         ValidationException thrown = assertThrows(ValidationException.class, () -> {
             joinService.process(form);
-        });
+        },keyword+"오류 !");
         String message = thrown.getMessage();
         assertTrue(message.contains(keyword));
     }
