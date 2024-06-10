@@ -3,5 +3,5 @@
 *.iml
 /dbeaver
 /apache-maven-*
-/apache-tomcat-10.1.24
+/apache-tomcat-*
 /gradle-*
