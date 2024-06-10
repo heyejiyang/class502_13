@@ -7,9 +7,11 @@ import member.services.LoginService;
 import member.validators.LoginValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Locale;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
@@ -51,5 +53,24 @@ public class Ex02Test {
 
         //only -> 단 한번만 호출되는지 테스트
 
+    }
+
+    @Test
+    void Test2(){
+        loginService.setMailer(mailer);
+        loginService.process(request);
+
+        //실제 투입된 값
+        String email = request.getParameter("email");
+
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+
+        then(mailer).should().send(captor.capture()); //내부에 발생한 인자를 캡쳐
+        //실제 사용된값을 확인해볼수있다.
+
+        String usedEmail = captor.getValue(); //send 메서드에서 매개변수로 사용한 값
+
+//        System.out.println(usedEmail); //send메서드 내부에서 투입된 값이 뭔지 확인할 수 있다.
+        assertEquals(email,usedEmail);
     }
 }
