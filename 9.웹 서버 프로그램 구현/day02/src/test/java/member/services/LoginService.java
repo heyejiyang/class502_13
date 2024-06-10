@@ -10,6 +10,5 @@ public class LoginService {
         String password = request.getParameter("password");
 
         System.out.printf("email=%s, password=%s%n", email,password); //값 확인해보기 테스트
-
     }
 }
