@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 @DisplayName("로그인 서비스 기능 테스트")
@@ -25,6 +26,10 @@ public class LoginServiceTest {
         //모의 객체 mock()... 인터페이스 객체 필요
         //HttpServletRequest 모의 객체 생성
         request = mock(HttpServletRequest.class);//내가 만들고자 하는 모의객체 정보를 알려줘야함 class 클래스(정보성 객체)
+
+        given(request.getParameter("email")).willReturn("test01@test.org"); //반환값을 내보내거나 예외를 발생시키거나 willreturn, willthrow
+
+        given(request.getParameter("password")).willReturn("12345678");
     }
 
     @Test
