@@ -58,9 +58,28 @@ public class LoginServiceTest {
     @Test
     @DisplayName("필수 항목(아이디, 비밀번호) 검증, 검증 실패시 ValidationException 발생")
     void requiredFieldTest(){
-        //아이디 필수 항목 검증
-        assertThrows(ValidationException.class,()->{
+        //아이디 필수 항목 검증 -null, 비어있는값 체크
+        ValidationException thrown = assertThrows(ValidationException.class,()->{
+            setParamData("email",faker.internet().emailAddress());
            loginService.process(request);
-        });//실패시 예외 발생 후 통과
+        });//실패시 예외 발생 후 통과, 실패하니 통과다!!! 예외발생!! 성공 아님!!
+        //검증하는 이유는 잘못된 데이터 들어왓을때 예외발생이 제대로 이루어지는지 체크하는것
+
+        String message = thrown.getMessage();
+        assertTrue(message.contains("이메일")); //이메일이 포함되어있으면 true반환
+    }
+    void requiredFieldEachTest(String name, String message){
+        setParamData("email",null);
+        setParamData("password",null);
+        ValidationException thrown = assertThrows(ValidationException.class,()->{
+            //null일때 검증
+            loginService.process(request);
+            //비어있는값일때 검증
+            setParamData(name,"   ");
+            loginService.process(request);
+        }, message+" 테스트");
+        //메시지 검증
+        String msg = thrown.getMessage();
+        assertTrue(msg.contains(message), message+" 테스트"); //실패시 문구
     }
 }
