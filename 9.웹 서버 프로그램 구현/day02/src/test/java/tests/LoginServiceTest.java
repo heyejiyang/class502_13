@@ -1,11 +1,14 @@
 package tests;
 
 
+import com.github.javafaker.Faker;
 import jakarta.servlet.http.HttpServletRequest;
 import member.services.LoginService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
@@ -16,6 +19,7 @@ public class LoginServiceTest {
 
     private LoginService loginService;
     private HttpServletRequest request; //사용자 요청 객체
+    private Faker faker;
 
     //테스트전에 매번 쓸 객체나 필요할 부분 초기화
     //테스트 할때마다 객체를 생성할것임
@@ -26,12 +30,7 @@ public class LoginServiceTest {
         //모의 객체 mock()... 인터페이스 객체 필요
         //HttpServletRequest 모의 객체 생성
         request = mock(HttpServletRequest.class);//내가 만들고자 하는 모의객체 정보를 알려줘야함 class 클래스(정보성 객체)
-
-//        given(request.getParameter("email")).willReturn("test01@test.org"); //반환값을 내보내거나 예외를 발생시키거나 willreturn, willthrow
-//
-//        given(request.getParameter("password")).willReturn("12345678");
-//
-//        given(request.getParameter("123")).willThrow(IllegalAccessError.class);
+        faker = new Faker(Locale.KOREAN);
     }
 
     void setParamData(String name, String value){
@@ -40,8 +39,9 @@ public class LoginServiceTest {
 
     //성공시 데이터
     void setSuccessData(){
-        setParamData("emali","test01@test.org");
-        setParamData("password","12345678");
+        String password = faker.regexify("\\w{8}]").toLowerCase();//정규표현식
+        setParamData("email", faker.internet().emailAddress()); //가짜데이터 넣기
+        setParamData("password",password);
     }
 
     @Test
