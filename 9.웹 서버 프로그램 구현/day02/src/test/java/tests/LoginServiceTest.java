@@ -58,19 +58,17 @@ public class LoginServiceTest {
     @Test
     @DisplayName("필수 항목(아이디, 비밀번호) 검증, 검증 실패시 ValidationException 발생")
     void requiredFieldTest(){
-        //아이디 필수 항목 검증 -null, 비어있는값 체크
-        ValidationException thrown = assertThrows(ValidationException.class,()->{
-            setParamData("email",faker.internet().emailAddress());
-           loginService.process(request);
-        });//실패시 예외 발생 후 통과, 실패하니 통과다!!! 예외발생!! 성공 아님!!
-        //검증하는 이유는 잘못된 데이터 들어왓을때 예외발생이 제대로 이루어지는지 체크하는것
-
-        String message = thrown.getMessage();
-        assertTrue(message.contains("이메일")); //이메일이 포함되어있으면 true반환
+        assertAll(
+                //이메일 검증
+                () -> requiredFieldEachTest("email","이메일"),
+                //비밀번호 검증
+                () -> {
+                    setParamData("email",faker.internet().emailAddress());
+                    requiredFieldEachTest("password","비밀번호");
+                }
+        );
     }
     void requiredFieldEachTest(String name, String message){
-        setParamData("email",null);
-        setParamData("password",null);
         ValidationException thrown = assertThrows(ValidationException.class,()->{
             //null일때 검증
             loginService.process(request);
@@ -80,6 +78,22 @@ public class LoginServiceTest {
         }, message+" 테스트");
         //메시지 검증
         String msg = thrown.getMessage();
+        //System.out.println(msg);
         assertTrue(msg.contains(message), message+" 테스트"); //실패시 문구
     }
+
+    @Test
+    @DisplayName("이메일로 회원이 조회되는지 검증, 검증 실패시 ValidationException 발생")
+    void memberExistsTest(){
+
+    }
+
+    @Test
+    @DisplayName("비밀번호가 일치하는지 검증, 검증 실패시 PasswordMismatchException 발생")
+    void memberAuthTest(){
+
+    }
+
+    //검증성공시 로그인 처리
+
 }
