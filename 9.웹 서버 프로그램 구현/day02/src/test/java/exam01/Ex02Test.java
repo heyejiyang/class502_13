@@ -13,6 +13,7 @@ import java.util.Locale;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.only;
 
 public class Ex02Test {
 
@@ -44,9 +45,11 @@ public class Ex02Test {
         loginService.process(request);
 
         String email = request.getParameter("email");
-        then(mailer).should().send(email); //모의 객체 넣어주기
+        then(mailer).should(only()).send(email); //모의 객체 넣어주기
         //should -> 적어도 한번이상 호출
         //send 함수가 loginService.process 메서드에서 한번 이상 호출되는지 테스트
+
+        //only -> 단 한번만 호출되는지 테스트
 
     }
 }
