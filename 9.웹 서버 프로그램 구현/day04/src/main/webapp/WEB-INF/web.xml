@@ -37,4 +37,13 @@ web.xml 설정에 따라, 이 요청은 controllers.MemberController 클래스�
         <filter-name>board2-filter</filter-name>
         <url-pattern>/board</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>common-filter</filter-name>
+        <filter-class>filters.CommonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>common-filter</filter-name>
+        <url-pattern>/*</url-pattern><!--모든 경로에 다 유지할 필터-->
+    </filter-mapping>
 </web-app>
