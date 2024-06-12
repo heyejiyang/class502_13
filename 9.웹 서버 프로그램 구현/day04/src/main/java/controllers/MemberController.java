@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class MemberController extends HttpServlet {
     @Override
@@ -42,13 +43,17 @@ public class MemberController extends HttpServlet {
 
     //get방식
     //회원가입 양식
-    private void joinForm(HttpServletRequest req, HttpServletResponse resp){
-
+    private void joinForm(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+        resp.setContentType("text/html;charset-UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<h1>회원가입</h1>");
     }
     //get방식
     //로그인 양식
-    private void loginForm(HttpServletRequest req, HttpServletResponse resp){
-
+    private void loginForm(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<h1>로그인</h1>");
     }
 
     //Post방식
