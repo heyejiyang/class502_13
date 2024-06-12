@@ -17,5 +17,6 @@ public class BoardController extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
         out.println("<h1>게시판이라구</h1>");
+        System.out.println("doGet메서드!");
     }
 }
