@@ -16,12 +16,12 @@ import java.util.List;
 public class BoardListController extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         BoardInfoService service = new BoardInfoService();
         List<BoardData> items = service.getList();
 
-        req.setAttribute("items", items); //데이터가 뷰로 넘어감
+        req.setAttribute("items", items); //속성을 통해서 넘겨준다.
 
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/templates/board/list.jsp");
-        rd.forward(req,resp);
     }
 }
