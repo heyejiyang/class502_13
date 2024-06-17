@@ -1,0 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<c:set var ="num" value="100"/>
+<c:set var ="num1" value="200"/>
+<c:set var ="num2" value="300"/>
+
+${num}
+
+<c:set var="sum" value="${num1+num2}" />
