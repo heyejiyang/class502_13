@@ -23,7 +23,7 @@
             <c:if test="${!empty title}">
             ${title} -
             </c:if>
-        <fmt:message key="SITE_TILE"/>
+        <fmt:message key="SITE_TITLE"/>
         </title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
         <jsp:invoke fragment="commonCss"/>
