@@ -6,7 +6,11 @@
 <%@ attribute name="footer" fragment="true" %>
 <%@ attribute name="commonCss" fragment="true" %>
 <%@ attribute name="commonJs" fragment="true" %>
+<%@ attribute name="title" %>
 
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+
+<fmt:setBundle basename="messages.commons"/>
 <c:url  var="cssUrl" value="/static/css/"/>
 <c:url var="jsUrl" value="/static/js/"/>
 
@@ -15,7 +19,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>레이아웃 연습!</title>
+        <title>
+            <c:if test="${!empty title}">
+            ${title} -
+            </c:if>
+        <fmt:message key="SITE_TILE"/>
+        </title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
         <jsp:invoke fragment="commonCss"/>
         <c:if test="${addCss != null}">

@@ -7,8 +7,10 @@
 <c:url var="cssUrl" value="/static/css/"/>
 <c:url var="jsUrl" value="/static/js/"/>
 
+<%@ attribute name="title"%>
+
 <%-- 헤더와 푸터 정의 --%>
-<layout:common>
+<layout:common title="${title}">
     <jsp:attribute name="header">
         <h1>메인 레이아웃 상단 영역!</h1>
     </jsp:attribute>
