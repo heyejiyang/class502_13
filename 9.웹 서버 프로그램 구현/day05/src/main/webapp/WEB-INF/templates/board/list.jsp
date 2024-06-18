@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layouts" %>
+<layout:main>
 <h1>게시글 목록</h1>
 
 <ul>
@@ -16,3 +18,4 @@
         </li>
     </c:forEach>
 </ul>
+</layout:main>
