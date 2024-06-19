@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.apache.ibatis.javassist.bytecode.DuplicateMemberException;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
+import org.choongang.member.mapper.MemberMapper;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.MemberServiceProvider;
 import org.choongang.member.validators.JoinValidator;
@@ -42,10 +43,9 @@ public class JoinServiceTest {
 
     @Test
     @DisplayName("회원가입 성공시 예외가 발생하지 않음")
-    void successTest(){
-        assertDoesNotThrow(()->{
-           JoinService joinService = new JoinService(new JoinValidator());
-           joinService.process(getData());
+    void successTest() {
+        assertDoesNotThrow(() -> {
+            joinService.process(getData());
         });
     }
 

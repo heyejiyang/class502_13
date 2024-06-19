@@ -22,7 +22,7 @@ public class DBConn {
     public static SqlSession getSesson(boolean autoCommit){
         return factory.openSession(autoCommit);
     }
-    public static SqlSession sqlSession(){
+    public static SqlSession getSession(){
         return getSesson(true);
     }
 }
