@@ -2,8 +2,11 @@ package org.choongang.member.tests;
 
 import com.github.javafaker.Faker;
 import org.apache.ibatis.javassist.bytecode.DuplicateMemberException;
+import org.choongang.global.configs.DBConn;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
+import org.choongang.member.entities.Member;
+import org.choongang.member.exceptions.DuplicatedMemberException;
 import org.choongang.member.mapper.MemberMapper;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.MemberServiceProvider;
@@ -23,9 +26,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JoinServiceTest {
 
     private JoinService joinService;
+    private MemberMapper mapper;
     @BeforeEach
     void init(){
         joinService = MemberServiceProvider.getInstance().joinService();
+        mapper = DBConn.getSession().getMapper(MemberMapper.class);
     }
 
     RequestJoin getData(){
@@ -44,9 +49,13 @@ public class JoinServiceTest {
     @Test
     @DisplayName("회원가입 성공시 예외가 발생하지 않음")
     void successTest() {
+        RequestJoin form = getData();
         assertDoesNotThrow(() -> {
-            joinService.process(getData());
+            joinService.process(form);
         });
+        //가입된 이메일로 회원이 조회 되는지 체크
+        Member member = mapper.get(form.getEmail());
+        assertEquals(form.getEmail(),member.getEmail());
     }
 
     @Test
@@ -135,11 +144,12 @@ public class JoinServiceTest {
 
     @Test
     @DisplayName("이미 가입된 메일인 경우 DuplicatedMemberException 발생")
-    void duplicateEmailTest(){
-        assertThrows(DuplicateMemberException.class,()->{
+    void duplicateEmailTest() {
+        MemberServiceProvider provider = MemberServiceProvider.getInstance();
+        assertThrows(DuplicatedMemberException.class, () -> {
             RequestJoin form = getData();
-            joinService.process(form);
-            joinService.process(form); //두번 가입 시키면 예외발생
+            provider.joinService().process(form);
+            provider.joinService().process(form);
         });
     }
 
