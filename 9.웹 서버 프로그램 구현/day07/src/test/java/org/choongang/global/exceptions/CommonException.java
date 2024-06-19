@@ -14,4 +14,8 @@ public class CommonException extends RuntimeException { //유연한 예외 처�
         super(message);
         this.status = status;
     }
+
+    public int getStatus() {
+        return status;
+    }
 }
