@@ -13,6 +13,9 @@ import org.choongang.member.services.MemberServiceProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static org.choongang.global.MessageUtil.alertError;
+import static org.choongang.global.MessageUtil.go;
+
 /*
 회원가입 컨트롤러
  */
@@ -38,12 +41,13 @@ public class JoinController extends HttpServlet { //상속받으면 얘는 서�
 
             joinService.process(req); //사용자 요청을 process에 넘겨주기!
             //요청데이터 들어오면 DTO로 변환작업
+
+            //자바스크립트 형태로 이동
+            go(req.getContextPath()+"/member/login","parent",resp);
+
+            //resp.sendRedirect(req.getContextPath()+"/member/login");
         }catch(CommonException e){
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.setStatus(e.getStatus()); //응답코드 400
-            //스크립트태그형태로 화면 출력
-            PrintWriter out = resp.getWriter();
-            out.printf("<script>alert('%s');</script>", e.getMessage());
+            alertError(e,resp);
         }
 
     }
