@@ -6,6 +6,7 @@ import org.choongang.global.validators.RequiredValidator;
 import org.choongang.global.validators.Validator;
 import org.choongang.member.entities.Member;
 import org.choongang.member.mapper.MemberMapper;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginValidator implements Validator<HttpServletRequest>, RequiredValidator { //검증하고자하는 전달 객체 지네릭 타입으로 선언
     //RequiredValidator 에는 null이거나 빈값일때 예외처리 메서드, 참인지 체크하는 메서드 들어있음(참이 아니면 예외던짐) (checkedRequired, checkTrue)
@@ -36,6 +37,12 @@ public class LoginValidator implements Validator<HttpServletRequest>, RequiredVa
         아이디가 틀렸습니다 하면 비번이 맞다는걸 알아채고
         비밀번호가 틀렸습니다 하면 아이디는 맞다는걸 알아챌 수 있기 때문! 보안적인 측면
         * */
+
+        //비밀전호 일치 여부 체크
+        //실패시 비번 불일치,성공시 비번 일치
+        boolean isMatch = BCrypt.checkpw(password, member.getPassword());
+        //(사용자가 입력한데이터/ DB에 있는데이터) 일치 여부 true/false로 반환
+        checkTrue(isMatch, new BadRequestException(message));
 
     }
 }
