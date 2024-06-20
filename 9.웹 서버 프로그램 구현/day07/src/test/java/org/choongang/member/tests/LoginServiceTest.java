@@ -4,11 +4,13 @@ package org.choongang.member.tests;
 import com.github.javafaker.Faker;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.ibatis.session.SqlSession;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.services.MemberServiceProvider;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,6 +35,8 @@ public class LoginServiceTest {
 
     private RequestJoin form;
 
+    private SqlSession dbsession;
+
     //매번 테스트할때마다 객체 생성할수 있게 넣어줌
     private LoginService loginService;
     @BeforeEach
@@ -45,21 +49,26 @@ public class LoginServiceTest {
         //성공데이터(가짜 데이터)
         faker = new Faker(Locale.ENGLISH); //데이터는 영어로
 
+        //환경변수에 따라 바뀜
+        dbsession = MemberServiceProvider.getInstance().getSession();
+
         //회원 가입 -> 가입한 회원 정보로 email, password 스텁 생성
         //중복 안시키기 위해 millis추가
         form = RequestJoin.builder()
                 .email(System.currentTimeMillis()+faker.internet().emailAddress())
                 .password(faker.regexify("\\w{8,16}").toLowerCase()) //8자리부터 16자리까지
                 .userName(faker.name().fullName())
+                .termsAgree(true)
                 .build();
+        form.setConfirmPassword(form.getPassword());
         joinService.process(form); //이 데이터를 바탕으로 로그인 할 예정..
 
         setData(); //데이터 항상 초기화시켜주기 위해
     }
 
     void setData(){
-        setParam("email", faker.internet().emailAddress());
-        setParam("password", faker.regexify("\\w{8}.toLowerCase()"));
+        setParam("email", form.getEmail()); //실제 가입한 데이터로 체크
+        setParam("password", form.getPassword());
     }
 
     //가짜데이터 만드는 메서드
@@ -117,8 +126,31 @@ public class LoginServiceTest {
 
     @Test
     @DisplayName("이메일로 회원이 조회 되는지 검증, 검증 실패시 BadRequestException 발생")
-    void memberExistTest(){
+    void memberExistTest() {
+        setParam("email", "****" + form.getEmail());
+        BadRequestException thrown = assertThrows(BadRequestException.class, () -> {
+            loginService.process(request);
+            //첫번째 매개변수의 예외와 같은 예외 발생시 테스트 통과
+        });
+        String message = thrown.getMessage();
+        assertTrue(message.contains("이메일 또는 비밀번호"));
+        //message객체에 아이디 또는 비밀번호 문구가 담겨있다면 true로 통과
+    }
 
+    @Test
+    @DisplayName("비밀번호 검증, 검증 실패시 BadRequestException")
+    void passwordCheckTest(){
+        setParam("password","****"+form.getPassword());
+        BadRequestException thrown = assertThrows(BadRequestException.class, ()->{
+            loginService.process(request);
+        });
+        String message = thrown.getMessage();
+        assertTrue(message.equals("이메일 또는 비밀번호"));
+    }
+
+    @AfterEach
+    void destroy(){
+        dbsession.rollback();
     }
 
 }

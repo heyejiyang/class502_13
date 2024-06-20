@@ -20,6 +20,11 @@ public class DBConn {
         }
     }
     public static SqlSession getSesson(boolean autoCommit){
+        String mode = System.getenv("mode"); //환경변수 설정
+        // mode가 test이면 false
+        if(mode != null && mode.equals("test")){ autoCommit = false; }
+
+
         return factory.openSession(autoCommit);
     }
     public static SqlSession getSession(){
