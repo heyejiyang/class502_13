@@ -39,6 +39,9 @@ public class LoginServiceTest {
 
     @Mock
     private HttpSession session;
+    /*
+    HttpSession 객체는 Java EE(Servlet API)에서 제공하는 인터페이스로, 웹 애플리케이션에서 사용자별로 데이터를 저장하고 관리하는 데 사용됨, 세션은 주로 사용자 로그인 상태, 장바구니 정보 등과 같은 사용자별 데이터를 저장
+     */
 
     private Faker faker; //자주 사용되까 객체 따로 만듦
 
@@ -76,6 +79,14 @@ public class LoginServiceTest {
 
         //모의객체 세션넣어주기
         given(request.getSession()).willReturn(session);
+        //request 객체의 getSession() 메서드가 호출되었을 때, 실제 세션 객체 대신 모의된 session 객체를 반환하도록 설정
+
+        /*
+        given -> 모키토 라이브러리의 메서드
+        - request.getSession 호출시 호출시 session 반환
+        - request.getSession은 Http 요청에서 세션 객체를 가져오는 메서드임, 세션 객체는 사용자 정보를 저장하거나 관리하는데 사용됨
+        - willReturn(session)은 given()과 함께 사용되어, request.getSession()이 호출될 때 반환될 값을 지정, 여기서는 session이라는 모의 객체가 반환되도록 설정
+         */
     }
 
     void setData(){
@@ -84,10 +95,11 @@ public class LoginServiceTest {
     }
 
     //가짜데이터 만드는 메서드
+    //request.getParameter(name) 호출 시 value를 반환하도록 설정
     void setParam(String name, String value){
         //가짜 데이터 스텁 생성
         given(request.getParameter(name)).willReturn(value);
-        //request객체의 parameter에 name값이 주어지면 value값을 반환
+        //request 객체의 getParameter 메서드가 name 파라미터로 호출될 때 value 값을 반환하도록 설정
     }
 
     @Test
@@ -104,9 +116,15 @@ public class LoginServiceTest {
         then(session).should(only()).setAttribute(any(),any());
         /*
         then() 은 모키토에서 쓰는건데
-then(session) = session객체의 행동을 확인or 검증 준비
-should() 는 모키토 라이브러리 객체 특정 메서드 호출되었는지 확인
-이 코드는 session 객체가 setAttribute 메서드를 사용하여 "member"라는 이름의 속성에 어떤 값이라도 설정하는 동작이 있었는지를 검증
+        then(session) -> session객체의 행동을 확인 or 검증 준비
+        - 즉 then 메서드는 session 객체에 대한 행동을 검증할때 사용
+        should() -> 모키토 라이브러리 객체 특정 메서드 호출되었는지 확인해주는 메서드
+        - session 객체의 메서드 호출을 검증하는 역할을 함
+        only() -> 세션 객체에서 특정 메서드가 오직 한번만 호출되었는지 검증함
+        - 즉 세션 객체에서 setAttribute 메서드가 한번만 호출되었고 다른 메서드는 호출되지 않았음을 보장
+        setAttribute(any(),any()) -> session 객체의 setAttribute 메서드가 호출되었는지를 검증
+        - any 메서드는 매개변수로 어떤 값이든 허용한다는 의미, 2개의 매개변수를 사용하여 호출됨을 확인
+        이 코드는 session 객체가 setAttribute 메서드를 사용하여 "member"라는 이름의 속성에 어떤 값이라도 설정하는 동작이 있었는지를 검증
          */
     }
 
