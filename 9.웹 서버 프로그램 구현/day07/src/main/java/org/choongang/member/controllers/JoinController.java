@@ -42,8 +42,12 @@ public class JoinController extends HttpServlet { //상속받으면 얘는 서�
             joinService.process(req); //사용자 요청을 process에 넘겨주기!
             //요청데이터 들어오면 DTO로 변환작업
 
-            //자바스크립트 형태로 이동
+            //회원가입 성공시 하단 메서드 실행
+            //클라이언트를 지정된 URL로 이동시키는 역할을 함
+            //자바스크립트 형태로 페이지이동
             go(req.getContextPath()+"/member/login","parent",resp);
+            //reg.getContextPath는 현재 웹 애플리케이션의 context경로 반환 ex) day07
+            //parent -> 현재 프레임의 부모창을 의미, 따라서 부모창에서 URL을 변경하게 된다.
 
             //resp.sendRedirect(req.getContextPath()+"/member/login");
         }catch(CommonException e){
