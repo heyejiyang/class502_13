@@ -2,8 +2,8 @@ package org.choongang.member.tests;
 
 
 import com.github.javafaker.Faker;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
@@ -17,19 +17,28 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.only;
 
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 @DisplayName("로그인 기능 테스트")
 public class LoginServiceTest {
 
     //모의객체
     @Mock
     private HttpServletRequest request;
+
+    @Mock
+    private HttpSession session;
 
     private Faker faker; //자주 사용되까 객체 따로 만듦
 
@@ -64,6 +73,9 @@ public class LoginServiceTest {
         joinService.process(form); //이 데이터를 바탕으로 로그인 할 예정..
 
         setData(); //데이터 항상 초기화시켜주기 위해
+
+        //모의객체 세션넣어주기
+        given(request.getSession()).willReturn(session);
     }
 
     void setData(){
@@ -85,6 +97,17 @@ public class LoginServiceTest {
         assertDoesNotThrow(()->{
            loginService.process(request); //로그인 기능 처리
         });
+
+        //로그인 처리 완료시 HttpSession - setAttribute 메서드가 호출됨
+        //setAttribute가 호출 되었는지 체크
+        //세션쪽 값 호출 한번만.. -> only
+        then(session).should(only()).setAttribute(any(),any());
+        /*
+        then() 은 모키토에서 쓰는건데
+then(session) = session객체의 행동을 확인or 검증 준비
+should() 는 모키토 라이브러리 객체 특정 메서드 호출되었는지 확인
+이 코드는 session 객체가 setAttribute 메서드를 사용하여 "member"라는 이름의 속성에 어떤 값이라도 설정하는 동작이 있었는지를 검증
+         */
     }
 
     @Test

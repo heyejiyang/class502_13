@@ -11,6 +11,6 @@ public class BadRequestException extends CommonException{
 
     public BadRequestException(String mesage) {
         //응답코드 400으로 고정
-        super(mesage, HttpServletResponse.SC_BAD_REQUEST);
+        super(mesage, HttpServletResponse.SC_BAD_REQUEST); //부모 생성자에 응답코드 전달
     }
 }

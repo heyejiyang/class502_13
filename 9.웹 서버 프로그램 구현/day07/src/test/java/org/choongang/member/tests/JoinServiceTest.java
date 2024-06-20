@@ -1,7 +1,6 @@
 package org.choongang.member.tests;
 
 import com.github.javafaker.Faker;
-import org.apache.ibatis.javassist.bytecode.DuplicateMemberException;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
@@ -10,7 +9,6 @@ import org.choongang.member.exceptions.DuplicatedMemberException;
 import org.choongang.member.mapper.MemberMapper;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.MemberServiceProvider;
-import org.choongang.member.validators.JoinValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
