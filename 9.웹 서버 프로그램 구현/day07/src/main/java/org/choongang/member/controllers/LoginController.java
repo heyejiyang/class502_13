@@ -3,6 +3,7 @@ package org.choongang.member.controllers;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -30,6 +31,23 @@ public class LoginController extends HttpServlet {
         try {
             LoginService service = MemberServiceProvider.getInstance().loginService();
             service.process(req); //로그인 검증 처리
+
+            //위에 코드에서 예외가 발생하지 않고 검증이 끝났다면 밑에 코드 실행됨
+            //아닐경우 catch로 예외처리된다
+            /*이메일 기억하기 처리 S*/
+            String email = req.getParameter("email");
+            Cookie cookie = new Cookie("saveEmail", email);
+
+            if(req.getParameter("saveEmail") != null){
+                //saveEmail이 체크되어있으면 값이 있는걸로 넘어오고 체크되어있지않으면 값없이 반환되어서 null인 상태
+                //쿠키 유효시간 7일간 기억하기
+                cookie.setMaxAge(60*60*24*7);
+            }else{ //체크되어있지 않을때 쿠키 제거 - 시간
+                cookie.setMaxAge(0);
+            }
+            resp.addCookie(cookie);
+            //체크되어 있으면 쿠키 등록
+            /*이메일 기억하기 처리 E*/
 
             //로그인 성공시 하단 메서드 실행
             //클라이언트를 지정된 URL로 이동시키는 역할을 함
