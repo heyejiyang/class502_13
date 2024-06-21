@@ -29,6 +29,8 @@ dependencies {
 
     implementation 'org.mindrot:jbcrypt:0.4'
 
+    implementation 'org.apache.commons:commons-fileupload2-jakarta-servlet6:2.0.0-M2'
+
     implementation 'org.slf4j:slf4j-api:2.0.13'
     testImplementation 'ch.qos.logback:logback-classic:1.5.6'
 
