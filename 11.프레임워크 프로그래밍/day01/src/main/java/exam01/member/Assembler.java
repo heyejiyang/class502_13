@@ -10,7 +10,10 @@ public class Assembler {
     }
 
     public JoinValidator joinValidator(){
-        return new JoinValidator();
+        JoinValidator validator = new JoinValidator();
+        validator.setMemberDao(memberDao());
+
+        return validator;
     }
     public JoinService joinService(){
         return new JoinService(joinValidator(),memberDao());
