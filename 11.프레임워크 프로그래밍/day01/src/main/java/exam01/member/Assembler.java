@@ -15,7 +15,9 @@ public class Assembler {
 
         return validator;
     }
-    public JoinService joinService(){
-        return new JoinService(joinValidator(),memberDao());
+
+    public JoinService joinService() {
+        //return new JoinService(joinValidator(), memberDao());
+        return new JoinService();
     }
 }

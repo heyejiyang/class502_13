@@ -4,11 +4,17 @@ import exam01.member.controllers.RequestJoin;
 import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import exam01.member.validators.JoinValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.time.LocalDateTime;
 
 public class JoinService {
+
+    @Autowired
     private JoinValidator validator;
+    @Autowired
+    @Qualifier("memberDao")
     private MemberDao memberDao;
 
     /*
@@ -21,10 +27,10 @@ public class JoinService {
 
     //의존관계 - 없으면 객체 생성 불가
     //생성자를 통한 주입
-    public JoinService(JoinValidator validator, MemberDao memberDao) {
-        this.validator = validator;
-        this.memberDao = memberDao;
-    }
+//    public JoinService(JoinValidator validator, MemberDao memberDao) {
+//        this.validator = validator;
+//        this.memberDao = memberDao;
+//    }
 
     public void process(RequestJoin form){
         validator.check(form); //joinService는 validator 객체와 form 객체를 의존하고있다.

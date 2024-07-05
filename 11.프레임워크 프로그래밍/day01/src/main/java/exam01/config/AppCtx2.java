@@ -16,22 +16,28 @@ public class AppCtx2 {
     }
 
     @Bean
+    public MemberDao memberDao2(){
+        return new MemberDao();
+    }
+
+    @Bean
     public JoinValidator joinValidator(){
         JoinValidator joinValidator = new JoinValidator();
-        joinValidator.setMemberDao(memberDao());
+//        joinValidator.setMemberDao(memberDao());
 
         return joinValidator;
     }
 
     @Bean
     public JoinService joinService(){
-        return new JoinService(joinValidator(),memberDao());
+//        return new JoinService(joinValidator(),memberDao());
+        return new JoinService();
     }
 
     @Bean  //관리 객체
     public InfoService infoService(){
         InfoService infoService = new InfoService();
-        infoService.setMemberDao(memberDao());
+//        infoService.setMemberDao(memberDao());
 
         return infoService;
     }
