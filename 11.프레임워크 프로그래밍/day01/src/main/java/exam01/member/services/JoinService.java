@@ -4,19 +4,24 @@ import exam01.member.controllers.RequestJoin;
 import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import exam01.member.validators.JoinValidator;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.lang.annotation.Retention;
 import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class JoinService {
 
-    @Autowired
-    private JoinValidator validator;
-    @Autowired
+//    @Autowired
+    private final JoinValidator validator;
+//    @Autowired
 //    @Qualifier("memberDao")
+    @NonNull
     private MemberDao memberDao;
 
     /*
