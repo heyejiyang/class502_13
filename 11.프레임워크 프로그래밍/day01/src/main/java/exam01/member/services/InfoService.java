@@ -5,19 +5,21 @@ import exam01.member.entities.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class InfoService {//회원목록 조회
 
     private MemberDao memberDao;
     private DateTimeFormatter formatter;
 
     @Autowired
-    @Qualifier("memberDao")
+//    @Qualifier("memberDao")
     public void setMemberDao(Optional<MemberDao> opt) {
         this.memberDao = opt.get();
     }
