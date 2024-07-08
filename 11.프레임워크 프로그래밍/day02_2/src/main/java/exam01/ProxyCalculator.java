@@ -1,6 +1,8 @@
 package exam01;
 
-public class ProxyCalculator implements Calculator{
+import exam02.Calculator;
+
+public class ProxyCalculator implements Calculator {
 
     // ImplCalculator, RecCalculator 대신 수행 해주려면 자료형은? => 다형성을 이용
 
