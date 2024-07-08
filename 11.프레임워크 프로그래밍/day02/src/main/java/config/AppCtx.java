@@ -3,10 +3,26 @@ package config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 
-@Configuration //설정클래스임을 알려주는 애노테이션
-@ComponentScan("member") //자동 스캔 - 지정한 패키지 범위를 기본 스캔 대상으로 스캔 -> 스캔 대상 애노테이션을 찾는다.
+@Configuration
+//@ComponentScan(basePackages = "member",
+//excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {ManualBean.class})})
+//ManualBean이 포함 되어있는 대상은 자동 스캔 범위에서 제외된다.
+//한개 일 경우 중괄호 생략 가능
+
+//@ComponentScan(basePackages = "member",
+//excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+//classes = {MemberDao.class, JoinValidator.class})
+//)
+
+//@ComponentScan(basePackages = "member",
+//excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX,
+//pattern = "member\\\\..*Dao")})
+
+@ComponentScan(basePackages = "member",
+excludeFilters = @ComponentScan.Filter(type = FilterType.ASPECTJ, pattern = "member..*Dao")
+)
 public class AppCtx {
-
 
 }

@@ -1,25 +1,27 @@
 package member.services;
 
 
+import lombok.RequiredArgsConstructor;
 import member.controllers.RequestJoin;
 import member.dao.MemberDao;
 import member.entities.Member;
 import member.validators.JoinValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class JoinService {
 
-    @Autowired //자동 의존성 주입
-    private JoinValidator validator;
 
-    @Autowired
+    private final JoinValidator validator;
+
+    @NonNull
     private MemberDao memberDao;
 
-
+//    public JoinService(JoinValidator validator) {}
 
     public void process(RequestJoin form){
         validator.check(form); //joinService는 validator 객체와 form 객체를 의존하고있다.
