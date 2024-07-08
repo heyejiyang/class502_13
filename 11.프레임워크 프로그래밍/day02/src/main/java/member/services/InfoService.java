@@ -31,7 +31,7 @@ public class InfoService {//회원목록 조회
 
     @Autowired
     public void setFormatter(@Nullable DateTimeFormatter formatter) {
-        System.out.println("호출!"); //호출 됨
+       // System.out.println("호출!"); //호출 됨
         this.formatter = formatter;
     }
 
