@@ -21,4 +21,9 @@ public class AppCtx {
         return new RecCalculator();
     }
 
+    @Bean
+    public ProxyCache proxyCache() {
+        return new ProxyCache();
+    }
+
 }
