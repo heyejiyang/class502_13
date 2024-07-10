@@ -17,9 +17,8 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name><!--스프링 설정 위치 지정-->
-            <param-value><!--두개의 설정 파일 사용-->
-                config.MvcConfig <!--Spring MVC와 관련된 설정을 정의하는 클래스-->
-                config.ControllerConfig <!--애플리케이션의 컨트롤러를 정의하는 클래스-->
+            <param-value>
+                configs.MvcConfig <!--Spring MVC와 관련된 설정을 정의하는 클래스-->
             </param-value>
         </init-param>
     </servlet>
