@@ -5,6 +5,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableJdbcRepositories(basePackages = "member")
 //@ComponentScan(basePackages = "member")
 @MapperScan("mappers")
+@ComponentScan("member")
 public class AppCtx {
 
     @Bean(destroyMethod = "close")
