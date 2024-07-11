@@ -18,11 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement //트랜잭션 관련 설정 자동화
-@MapperScan("org.choongang")
+@MapperScan("org.choongang") //마이바티스 매퍼 인터페이스를 스캔하여 빈으로 등록
 @EnableJdbcRepositories("org.choongang")//JDBC설정 활성화
 public class DBConfig extends AbstractJdbcConfiguration {
     @Bean(destroyMethod = "close")
-    public DataSource dataSource() {
+    public DataSource dataSource() { //데이터베이스 연결을 위한 빈 설정
 
         DataSource ds = new DataSource();
 
@@ -51,12 +51,12 @@ public class DBConfig extends AbstractJdbcConfiguration {
 
     //트랜잭션
     @Bean
-    public PlatformTransactionManager transactionManager() {
+    public PlatformTransactionManager transactionManager() { //트랜잭션 관리 설정
         return new DataSourceTransactionManager(dataSource());
     }
 
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
+    public SqlSessionFactory sqlSessionFactory() throws Exception { //마이바티스 사용 설정
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
 
@@ -67,4 +67,5 @@ public class DBConfig extends AbstractJdbcConfiguration {
     public NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);
     }
+    //Spring JDBC 프레임워크에서 제공하는 클래스로, SQL 쿼리를 실행할 때 이름 있는 파라미터(named parameters)를 사용할 수 있게 해줌
 }

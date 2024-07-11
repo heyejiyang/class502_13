@@ -24,7 +24,8 @@ public class MemberController {
 
     @PostMapping("/join")//Post방식 처리시 여기로 유입됨
     public String joinPs(RequestJoin form){
-        return "redirect:/member/login";
+        return "redirect:/member/login"; // 절대경로 기준 이동
+       // return "redirect:member/login"; // 상대 경로 기준 이동
     }
 
 
