@@ -25,6 +25,15 @@ public class MemberController {
         return List.of("취미1","취미2","취미3","취미4");
     }
 
+    @ModelAttribute("hobbies2")
+    public List<CodeValue> hobbies2(){
+        return List.of(
+                new CodeValue("취미1","hobby1"),
+                new CodeValue("취미2","hobby2"),
+                new CodeValue("취미3","hobby3")
+        );
+    }
+
     @GetMapping("/join")
     public String join(@ModelAttribute RequestJoin form) { // 값이 없을때 RequestJoin 이름을 가지고 앞자를 소문자로 바꿔서 자동으로 만들어줌
 
