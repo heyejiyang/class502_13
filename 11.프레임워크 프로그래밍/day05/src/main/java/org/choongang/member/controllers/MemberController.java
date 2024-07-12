@@ -1,32 +1,65 @@
 package org.choongang.member.controllers;
 
 
-import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
-    @GetMapping("/join") //핸들러 매핑이 요청 url과 매칭되는 컨트롤러 찾아줌
-//    @RequestMapping(path = "/member/join", method = {RequestMethod.GET,RequestMethod.POST}) //두개의 요청을 가져올 수 있는 상태
-    public String join(Model model, HttpServletRequest request){
-//        model.addAttribute("member", "안녕하세요.");
-//        //jsp에서 el식으로 접근 가능
-//
-//        System.out.println("method: "+request.getMethod());
+    @ModelAttribute("commonValue") //컨트롤러에서 공통으로 지정할 수 있는 속성값 ,이름 명시해줌
+    public String commonValue(){
+        return "공통 속성 값..";
+    }
+
+
+    @GetMapping("/join")
+    public String join(@ModelAttribute("command") RequestJoin form) { // 값이 없을때 RequestJoin 이름을 가지고 앞자를 소문자로 바꿔서 자동으로 만들어줌
+
         return "member/join";
     }
 
-    @PostMapping("/join")//Post방식 처리시 여기로 유입됨
-    public String joinPs(RequestJoin form){
-        return "redirect:/member/login"; // 절대경로 기준 이동
-       // return "redirect:member/login"; // 상대 경로 기준 이동
+    @PostMapping("/join")
+    public String joinPs(@ModelAttribute("command")RequestJoin form){ //같은 이름의 setter가 있으면 알아서 값을 대입해준다.
+        log.info(form.toString()); //폼에 작성한 요청 데이터 넘어오는지 확인
+        return "member/join";
+       //return "redirect:/member/login"; //Location 헤더: /day05/member/login //주소이동
+       // return "forward:/member/login"; //버퍼치환
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "member/login";
+    }
+
+//    @GetMapping("/join" )
+//    public String join1(Model model, HttpServletRequest request){
+//        log.info("{},{} 없음", "mode1","mode2");
+//        return "member/join";
+//    }
+//
+//    @GetMapping(path="/join",params ={"mode=join"} ) //mode값에 반드시 join이 있어야지 여기로 유입이 된다.
+//    public String join(Model model, HttpServletRequest request){
+//        log.info("mode=join");
+////        model.addAttribute("member", "안녕하세요.");
+////        //jsp에서 el식으로 접근 가능
+////
+////        System.out.println("method: "+request.getMethod());
+//        return "member/join";
+//    }
+//
+//    @PostMapping(value = "/join", headers = "appKey=1234", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String joinPs(RequestJoin form){
+//        log.info("JoinPs실행...");
+//        return "redirect:/member/login"; // 절대경로 기준 이동
+//       // return "redirect:member/login"; // 상대 경로 기준 이동
+//    }
 
 
 //@GetMapping("/member/join")
