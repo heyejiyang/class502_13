@@ -6,7 +6,7 @@
 ${commonValue}
 
 <h1>회원가입</h1>
-<form:form method="POST" action="${actionUrl}" autocomplete="off" modelAttribute="command">
+<form:form method="POST" action="${actionUrl}" autocomplete="off" modelAttribute="requestJoin">
     <dl>
         <dt>이메일</dt>
         <dd>
@@ -29,6 +29,20 @@ ${commonValue}
         <dt>회원명</dt>
         <dd>
             <form:input path="userName"/>
+        </dd>
+    </dl>
+    <dl>
+        <dt>취미</dt>
+        <dd>
+            <form:checkboxes path="hobby" items="${hobbies}"/>
+        </dd>
+    </dl>
+    <dl>
+        <dt>주소</dt>
+        <dd>
+            <form:input path="addr.zipCode" placeholder="우편번호"/>
+            <form:input path="addr.address" placeholder="주소"/>
+            <form:input path="addr.addressSub" placeholder="나머지 주소"/>
         </dd>
     </dl>
     <dl>

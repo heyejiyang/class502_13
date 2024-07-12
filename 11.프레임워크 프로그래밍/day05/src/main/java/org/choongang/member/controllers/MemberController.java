@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/member")
@@ -18,15 +20,19 @@ public class MemberController {
         return "공통 속성 값..";
     }
 
+    @ModelAttribute("hobbies") //공통 속성 추가
+    public List<String> hobbies(){
+        return List.of("취미1","취미2","취미3","취미4");
+    }
 
     @GetMapping("/join")
-    public String join(@ModelAttribute("command") RequestJoin form) { // 값이 없을때 RequestJoin 이름을 가지고 앞자를 소문자로 바꿔서 자동으로 만들어줌
+    public String join(@ModelAttribute RequestJoin form) { // 값이 없을때 RequestJoin 이름을 가지고 앞자를 소문자로 바꿔서 자동으로 만들어줌
 
         return "member/join";
     }
 
     @PostMapping("/join")
-    public String joinPs(@ModelAttribute("command")RequestJoin form){ //같은 이름의 setter가 있으면 알아서 값을 대입해준다.
+    public String joinPs(RequestJoin form){ //같은 이름의 setter가 있으면 알아서 값을 대입해준다.
         log.info(form.toString()); //폼에 작성한 요청 데이터 넘어오는지 확인
         return "member/join";
        //return "redirect:/member/login"; //Location 헤더: /day05/member/login //주소이동
@@ -34,7 +40,11 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login(RequestLogin2 form){
+        if(form != null){
+            log.info("이메일:{}, 비밀번호:{}", form.email(), form.password());
+            //변경불가 조회만 가능
+        }
         return "member/login";
     }
 
