@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+       
+    </head>
+    <body>
+        <button type="button" id="button">클릭</button>
+        <script> //스크립트가 해석되는 시점은 위의 버튼 객체가 만들어진 이후
+        //이때는 버튼이 먼저 document 객체로 바뀌어있는 형태이기 떄문에 이벤트를 바인딩 하지 않아도 선택은 가능하다.
+
+            const buttonEl = document.getElementById("button"); //id로 선택
+            console.log("buttonEl",buttonEl);
+        </script>
+    </body>
+</html>
