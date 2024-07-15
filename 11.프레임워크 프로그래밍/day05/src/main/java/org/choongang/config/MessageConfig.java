@@ -10,7 +10,7 @@ public class MessageConfig {
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-        ms.addBasenames("messages.commons"); //classpath 기준
+        ms.setBasenames("messages.commons","messages.validations","messages.errors"); //classpath 기준
         ms.setDefaultEncoding("UTF-8");
         ms.setUseCodeAsDefaultMessage(true); //코드 없을때는 코드 그 자체로 출력될 수 있도록 함
         return ms;
