@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 //@Table("CH_MEMBER") //클래스명과 테이블명을 다르게 써야할때 이 애노테이션을 사용하면 Member -> CH_MEMBER 테이블에 매칭된다.
 public class Member {
     @Id
