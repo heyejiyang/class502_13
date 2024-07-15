@@ -1,5 +1,6 @@
 package org.choongang.member.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.choongang.member.validators.JoinValidator;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public String joinPs(RequestJoin form, Errors errors){ //양식 제출
+    public String joinPs(@Valid RequestJoin form, Errors errors){ //양식 제출
         //회원가입 form 에서 post 요청시 검증
         //회원가입 데이터 검증
         joinValidator.validate(form, errors);
