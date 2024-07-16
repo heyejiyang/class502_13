@@ -23,6 +23,14 @@
                 org.choongang.config.MvcConfig <!--Spring MVC와 관련된 설정을 정의하는 클래스-->
             </param-value>
         </init-param>
+        <multipart-config>
+            <!-- 한번에 보낼 수 있는 파일 용량 설정-->
+            <!--한 파일당 최대 용량-->
+            <max-file-size>20971520</max-file-size> <!--  1MB * 20 -->
+            <!--한번에 보낼 수 있는 최대 용량(최대 업로드 파일 용량)-->
+            <max-request-size>62914560</max-request-size> <!-- 60MB -->
+            <file-size-threshold>20971520</file-size-threshold>
+        </multipart-config>
     </servlet>
 
     <servlet-mapping><!--서블릿과 URL패턴 매핑-->
