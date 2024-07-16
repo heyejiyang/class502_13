@@ -83,6 +83,16 @@ public class MemberController {
         return "redirect:/member/login";
     }
 
+    /*회원목록*/
+    @GetMapping("/list")
+    public String list(@Valid @ModelAttribute MemberSearch search,Errors errors){
+        //검증이 필요한 형태임을 알려줌 Valid 애노테이션 추가, 에러 객체 추가
+
+        log.info(search.toString());
+
+        return "member/list";
+    }
+
     /*
     @InitBinder
     public void initBinder(WebDataBinder binder) {
