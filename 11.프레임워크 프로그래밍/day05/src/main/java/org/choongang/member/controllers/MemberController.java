@@ -48,7 +48,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login(@ModelAttribute RequestLogin form,
-                        @CookieValue(name = "saveEmail",required = false) String savedEmail/*@SessionAttribute(name = "member",required = false) Member member*/)
+                        @CookieValue(name = "savedEmail",required = false) String savedEmail/*@SessionAttribute(name = "member",required = false) Member member*/)
     {
 //        if(member != null) {
 //            log.info(member.toString());
@@ -104,6 +104,7 @@ public class MemberController {
     public void info(@PathVariable("id") String email, @PathVariable(name= "id2", required = false) String email2){ //여러개 지정도 가능
         // 값이 없는 주소 대입되었을때 required false로 하면 null값이 들어간다.
         log.info("email:{}, email2:{}",email,email2);
+
     }
 
 //    @ExceptionHandler(Exception.class) //발생할 예외정보 클래스 정의(여러개 가능)
