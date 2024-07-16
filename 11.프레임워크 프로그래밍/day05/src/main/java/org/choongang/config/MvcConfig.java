@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.choongang") //스캔 범위 설정, 해당 경로에서 스프링 빈 검색
-@Import({DBConfig.class,MessageConfig.class})
+@Import({DBConfig.class,MessageConfig.class, InterceptorConfig.class})
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
 
