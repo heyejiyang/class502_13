@@ -4,11 +4,9 @@ plugins {
 
 group = 'org.choongang'
 version = '1.0-SNAPSHOT'
-
 ext {
     springVersion='6.1.10'
 }
-
 repositories {
     mavenCentral()
 }

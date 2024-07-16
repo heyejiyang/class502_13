@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <servlet><!--스프링에는 단 한가지의 서블릿 클래스를 제공,
+     이 서블릿은 모든 요청의 창구가 된다. 서블릿은 초기화시 스프링 컨테이너를 만들어줌-->
+        <servlet-name>dispatcher</servlet-name> <!--서블릿 이름 정의-->
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param><!--어떤 스프링 컨테이너를 쓸 것인지 알려줘야한다.-->
+            <param-name>contextClass</param-name>
+            <param-value><!--handler,adapter등 담겨있는 웹전용 컨테이너-->
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name><!--스프링 설정 위치 지정-->
+            <param-value>
+                org.choongang.config.MvcConfig <!--Spring MVC와 관련된 설정을 정의하는 클래스-->
+            </param-value>
+        </init-param>
+        <multipart-config>
+            <!-- 한번에 보낼 수 있는 파일 용량 설정-->
+            <!--한 파일당 최대 용량-->
+            <max-file-size>20971520</max-file-size> <!--  1MB * 20 -->
+            <!--한번에 보낼 수 있는 최대 용량(최대 업로드 파일 용량)-->
+            <max-request-size>62914560</max-request-size> <!-- 60MB -->
+            <file-size-threshold>20971520</file-size-threshold>
+        </multipart-config>
+    </servlet>
+
+    <servlet-mapping><!--서블릿과 URL패턴 매핑-->
+        <servlet-name>dispatcher</servlet-name> <!--매핑할 서블릿 이름 지정-->
+        <url-pattern>/</url-pattern><!--서블릿이 매핑될 URL 패턴을 지정-->
+    </servlet-mapping>
+    <!--모든 URL 패턴 (/)을 dispatcher 서블릿으로 매핑, 모든 요청이 DispatcherServlet을 통해 처리됨을 의미함-->
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern><!--모든 경로를 의미-->
+    </filter-mapping>
+
+</web-app>
+
