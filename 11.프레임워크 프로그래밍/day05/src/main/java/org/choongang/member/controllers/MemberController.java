@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
@@ -90,8 +91,27 @@ public class MemberController {
 
         log.info(search.toString());
 
+        boolean result = false;
+        if(!result){
+            throw new BadRequestException("예외 발생!!!");
+        }
+
         return "member/list";
     }
+
+    @ResponseBody //반환값을 void로 하기위해 넣은 애노테이션
+    @GetMapping({"/info/{id}/{id2}","/info/{id}"}) //경로변수 패턴 - 바뀔 수 있는 부분
+    public void info(@PathVariable("id") String email, @PathVariable(name= "id2", required = false) String email2){ //여러개 지정도 가능
+        // 값이 없는 주소 대입되었을때 required false로 하면 null값이 들어간다.
+        log.info("email:{}, email2:{}",email,email2);
+    }
+
+//    @ExceptionHandler(Exception.class) //발생할 예외정보 클래스 정의(여러개 가능)
+//    public String errorHandler(Exception e, HttpServletRequest request, HttpServletResponse response, Model model){
+//        e.printStackTrace();
+//        log.info("MemberController에서 유입");
+//        return "error/common"; //위에 예외 클래스 발생시 이 경로로 반환(뷰)
+//    }
 
     /*
     @InitBinder
