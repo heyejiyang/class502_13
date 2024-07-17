@@ -39,7 +39,7 @@ public class SurveyController {
         log.info("form : " + form.toString());
         log.info("form2 : " + form2.toString());
 
-        status.setComplete(); //세션 비우기 - requestSurvey 세션 비우기
+        status.setComplete();
 
         System.out.println("세션 비우기 후: "+ request.getSession().getAttribute("requestSurvey")); //null값 나옴
 
