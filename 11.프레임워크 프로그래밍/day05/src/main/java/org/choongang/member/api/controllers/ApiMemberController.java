@@ -2,11 +2,14 @@ package org.choongang.member.api.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.entities.Member;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.choongang.member.mappers.MemberMapper;
+import org.choongang.member.services.JoinService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,18 +20,28 @@ import java.util.stream.IntStream;
 @RestController
 @RequiredArgsConstructor
 public class ApiMemberController {
-    //private final MemberMapper mapper;
+    private final MemberMapper mapper;
+    private final JoinService joinService;
+
+    @PostMapping //POST /api/member -> 회원가입으로 동작
+    public ResponseEntity join(@RequestBody RequestJoin form)
+    {
+        joinService.process(form);
+
+        // 응답코드 201, 출력 바디 없음
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
     @GetMapping("/info/{email}")
-    public void info(@PathVariable("email")String email){
-        // Content-Type: application/json
-       // Member member = mapper.get(email);
+    public Member info(@PathVariable("email")String email){
+         //Content-Type: application/json
+        Member member = mapper.get(email);
 
-       // return member;
+        return member;
     }
 
     @GetMapping("/list")
-    public List<Member> list(){
+    public ResponseEntity<List<Member>> list(){
         List<Member> members = IntStream.rangeClosed(1,10)
                 .mapToObj(i -> Member.builder()
                         .email("user"+i+"@test.org")
@@ -38,7 +51,12 @@ public class ApiMemberController {
                         .build())
                 .toList();
 
-        return members;
+        HttpHeaders headers = new HttpHeaders();//헤더
+        headers.add("t1","v1");
+        headers.add("t2","v2");
+
+        return  new ResponseEntity<>(members, headers ,HttpStatus.OK);
+        //상세하게 응답 작성하고 싶을때
     }
 
     @GetMapping(value = "/test", produces = "text/html;charset=UTF-8")
