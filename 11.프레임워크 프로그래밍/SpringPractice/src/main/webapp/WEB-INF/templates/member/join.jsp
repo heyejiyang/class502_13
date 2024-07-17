@@ -5,7 +5,6 @@
 
 <c:url var="actionUrl" value="/member/join"/>
 
-${requestJoin}
 <h1>
     <spring:message code="회원가입"/>
 </h1>
@@ -14,7 +13,8 @@ ${requestJoin}
         <dt><spring:message code="이메일"/></dt>
         <dd>
             <form:input path="email"/>
-            <form:errors path="email"/>
+            <form:errors path="email" cssClass="error-txt"
+            cssStyle="color: red"/>
                 <%-- errors에 에러가 있으면 출력 없으면 출력되지 않음, 에러 여러개 있으면 여러개 출력--%>
         </dd>
     </dl>
@@ -22,28 +22,31 @@ ${requestJoin}
         <dt><spring:message code="비밀번호"/></dt>
         <dd>
             <form:password path="password"/>
-            <form:errors path="password"/>
+            <form:errors path="password" cssClass="error-txt"
+             cssStyle="color: red" />
         </dd>
     </dl>
     <dl>
         <dt><spring:message code="비밀번호_확인"/></dt>
         <dd>
             <form:password path="confirmPassword"/>
-            <form:errors path="confirmPassword"/>
+            <form:errors path="confirmPassword" cssClass="error-txt"
+             cssStyle="color: red"/>
         </dd>
     </dl>
     <dl>
         <dt><spring:message code="회원명"/></dt>
         <dd>
             <form:input path="userName"/>
-            <form:errors path="userName"/>
+            <form:errors path="userName" cssClass="error-txt"
+            cssStyle="color: red"/>
         </dd>
     </dl>
     <dl>
         <dt><spring:message code="약관동의"/></dt>
         <dd>
             <form:checkbox path="agree" value="true" label="회원가입 약관에 동의합니다."/>
-            <form:errors path="agree" element="div" delimiter=""/>
+            <form:errors path="agree" element="div" delimiter="" cssClass="error-txt" cssStyle="color: red"/>
         </dd>
     </dl>
     <button type="submit">
