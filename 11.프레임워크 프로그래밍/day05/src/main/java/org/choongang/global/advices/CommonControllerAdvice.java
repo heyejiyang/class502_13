@@ -28,9 +28,8 @@ public class CommonControllerAdvice {
         }
 
         ModelAndView mv = new ModelAndView();
-        mv.setStatus(status); //응답코드
-
         mv.setViewName("error/common");
+        mv.setStatus(status); //응답코드
 
         return mv;
     }

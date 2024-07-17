@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.global.exceptions.BadRequestException;
+import org.choongang.member.entities.Member;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
@@ -12,6 +13,10 @@ import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Slf4j
 @Controller
@@ -105,6 +110,21 @@ public class MemberController {
         // 값이 없는 주소 대입되었을때 required false로 하면 null값이 들어간다.
         log.info("email:{}, email2:{}",email,email2);
 
+    }
+
+    @ResponseBody
+    @GetMapping("/list2")
+    public List<Member> list(){
+        List<Member> members = IntStream.rangeClosed(1,10)
+                .mapToObj(i -> Member.builder()
+                        .email("user"+i+"@test.org")
+                        .password("12345678")
+                        .userName("사용자"+i)
+                        .regDt(LocalDateTime.now())
+                        .build())
+                .toList();
+
+        return members;
     }
 
 //    @ExceptionHandler(Exception.class) //발생할 예외정보 클래스 정의(여러개 가능)

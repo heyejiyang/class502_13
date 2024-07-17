@@ -6,7 +6,6 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
@@ -18,34 +17,34 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
-@Configuration
+//@Configuration
 public class DBConfig2 {
-    //정적 내부클래스
-    @Profile("dev")
-    @Configuration
-    @EnableTransactionManagement //트랜잭션 관련 설정 자동화
-    @MapperScan("org.choongang") //마이바티스 매퍼 인터페이스를 스캔하여 빈으로 등록
-    @EnableJdbcRepositories("org.choongang")//JDBC설정 활성화
-    static class DBConfigDev extends AbstractJdbcConfiguration { //정적 내부클래스 형태로 설정
+    @Profile("!prod") // prod 프로파일이 아닌 경우
+    //@Configuration
+    @EnableTransactionManagement
+    @MapperScan("org.choongang")
+    @EnableJdbcRepositories("org.choongang")
+    static class DBConfigDev extends AbstractJdbcConfiguration { //정적 내부클래스1
         @Bean(destroyMethod = "close")
-        public DataSource dataSource() { //데이터베이스 연결을 위한 빈 설정
+        public DataSource dataSource() {
             log.info("dev 프로파일!");
+
             DataSource ds = new DataSource();
 
-            /*연결 설정 S*/
+            /* 연결 설정 S */
             ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
             ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
             ds.setUsername("SPRING");
             ds.setPassword("oracle");
-            /*연결 설정 E*/
+            /* 연결 설정 E */
 
-            /*커넥션 풀 설정 S*/
+            /* 커넥션 풀 설정 S */
             ds.setInitialSize(2);
             ds.setMaxActive(10);
-            ds.setTestWhileIdle(true); //연결이 유효한지 체크하겠다
-            ds.setMinEvictableIdleTimeMillis(1000 * 60); //유휴객체 살아있는시간 - 기본은 1분(기본값)
-            ds.setTimeBetweenEvictionRunsMillis(1000 * 5);//체크 주기 5초에 한번씩(기본값)
-            /*커넥션 풀 설정 E*/
+            ds.setTestWhileIdle(true);
+            ds.setMinEvictableIdleTimeMillis(1000 * 60);
+            ds.setTimeBetweenEvictionRunsMillis(1000 * 5);
+            /* 커넥션 풀 설정 E */
 
             return ds;
         }
@@ -55,14 +54,13 @@ public class DBConfig2 {
             return new JdbcTemplate(dataSource());
         }
 
-        //트랜잭션
         @Bean
-        public PlatformTransactionManager transactionManager() { //트랜잭션 관리 설정
+        public PlatformTransactionManager transactionManager() {
             return new DataSourceTransactionManager(dataSource());
         }
 
         @Bean
-        public SqlSessionFactory sqlSessionFactory() throws Exception { //마이바티스 사용 설정
+        public SqlSessionFactory sqlSessionFactory() throws Exception {
             SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
             factoryBean.setDataSource(dataSource());
 
@@ -73,35 +71,35 @@ public class DBConfig2 {
         public NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
             return new NamedParameterJdbcTemplate(dataSource);
         }
-        //Spring JDBC 프레임워크에서 제공하는 클래스로, SQL 쿼리를 실행할 때 이름 있는 파라미터(named parameters)를 사용할 수 있게 해줌
     }
 
-    //정적 내부클래스2
     @Profile("prod")
-    @Configuration
-    @EnableTransactionManagement //트랜잭션 관련 설정 자동화
-    @MapperScan("org.choongang") //마이바티스 매퍼 인터페이스를 스캔하여 빈으로 등록
-    @EnableJdbcRepositories("org.choongang")//JDBC설정 활성화
-    static class DBConfigProd extends AbstractJdbcConfiguration { //정적 내부클래스 형태로 설정
+    //@Configuration
+    @EnableTransactionManagement
+    @MapperScan("org.choongang")
+    @EnableJdbcRepositories("org.choongang")
+    static class DBConfigProd extends AbstractJdbcConfiguration { //정적내부클래스2
+
         @Bean(destroyMethod = "close")
-        public DataSource dataSource() { //데이터베이스 연결을 위한 빈 설정
+        public DataSource dataSource() {
             log.info("prod 프로파일!");
+
             DataSource ds = new DataSource();
 
-            /*연결 설정 S*/
+            /* 연결 설정 S */
             ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
             ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
             ds.setUsername("SPRING");
             ds.setPassword("oracle");
-            /*연결 설정 E*/
+            /* 연결 설정 E */
 
-            /*커넥션 풀 설정 S*/
+            /* 커넥션 풀 설정 S */
             ds.setInitialSize(2);
             ds.setMaxActive(10);
-            ds.setTestWhileIdle(true); //연결이 유효한지 체크하겠다
-            ds.setMinEvictableIdleTimeMillis(1000 * 60); //유휴객체 살아있는시간 - 기본은 1분(기본값)
-            ds.setTimeBetweenEvictionRunsMillis(1000 * 5);//체크 주기 5초에 한번씩(기본값)
-            /*커넥션 풀 설정 E*/
+            ds.setTestWhileIdle(true);
+            ds.setMinEvictableIdleTimeMillis(1000 * 60);
+            ds.setTimeBetweenEvictionRunsMillis(1000 * 5);
+            /* 커넥션 풀 설정 E */
 
             return ds;
         }
@@ -111,14 +109,13 @@ public class DBConfig2 {
             return new JdbcTemplate(dataSource());
         }
 
-        //트랜잭션
         @Bean
-        public PlatformTransactionManager transactionManager() { //트랜잭션 관리 설정
+        public PlatformTransactionManager transactionManager() {
             return new DataSourceTransactionManager(dataSource());
         }
 
         @Bean
-        public SqlSessionFactory sqlSessionFactory() throws Exception { //마이바티스 사용 설정
+        public SqlSessionFactory sqlSessionFactory() throws Exception {
             SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
             factoryBean.setDataSource(dataSource());
 
@@ -129,6 +126,5 @@ public class DBConfig2 {
         public NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
             return new NamedParameterJdbcTemplate(dataSource);
         }
-        //Spring JDBC 프레임워크에서 제공하는 클래스로, SQL 쿼리를 실행할 때 이름 있는 파라미터(named parameters)를 사용할 수 있게 해줌
     }
 }
