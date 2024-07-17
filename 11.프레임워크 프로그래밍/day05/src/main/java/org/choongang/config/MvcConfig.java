@@ -1,15 +1,20 @@
 package org.choongang.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.choongang") //스캔 범위 설정, 해당 경로에서 스프링 빈 검색
-@Import({DBConfig.class,MessageConfig.class, InterceptorConfig.class})
+@Import({DBConfig.class,MessageConfig.class,
+        InterceptorConfig.class, FileConfig.class})
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
 
@@ -44,4 +49,28 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/mypage")
                 .setViewName("mypage/index");
     }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
+
+        String fileName = "application";
+        String profile = System.getenv("spring.profiles.active");
+        fileName += StringUtils.hasText(profile) ? "-" + profile : "";
+
+        /**
+         * spring.profiles.active=dev
+         * -> application-dev
+         *
+         * spring.profiles.active=prod
+         * -> application-prod
+         */
+
+        //PropertySources: 프로퍼티 파일에 있는 내용 , PlaceholderConfigurer: 설정 방법
+        PropertySourcesPlaceholderConfigurer conf = new PropertySourcesPlaceholderConfigurer();
+
+        conf.setLocations(new ClassPathResource(fileName+".properties")); //리소스 폴더에 접근할때 -  ClassPathResource
+
+        return conf;
+    }
+
 }

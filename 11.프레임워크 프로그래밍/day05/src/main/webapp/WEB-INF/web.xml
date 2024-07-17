@@ -23,6 +23,10 @@
                 org.choongang.config.MvcConfig <!--Spring MVC와 관련된 설정을 정의하는 클래스-->
             </param-value>
         </init-param>
+<!--        <init-param>-->
+<!--            <param-name>spring.profiles.active</param-name>-->
+<!--            <param-value>prod</param-value>-->
+<!--        </init-param>-->
         <multipart-config>
             <!-- 한번에 보낼 수 있는 파일 용량 설정-->
             <!--한 파일당 최대 용량-->
