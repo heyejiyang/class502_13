@@ -44,10 +44,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/"); //현재 경로 포함 하위 모든 경로
     }
 
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/WEB-INF/templates/", ".jsp");
-    }
+    //타임리프 때문에 주석처리함
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        registry.jsp("/WEB-INF/templates/", ".jsp");
+//    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
