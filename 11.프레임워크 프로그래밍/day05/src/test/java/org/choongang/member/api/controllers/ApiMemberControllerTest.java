@@ -43,7 +43,7 @@ public class ApiMemberControllerTest {
         om.registerModule(new JavaTimeModule());
 
         RequestJoin form = new RequestJoin();
-        form.setEmail("user100@test.org");
+        //form.setEmail("user100@test.org");
         form.setPassword("12345678");
         form.setConfirmPassword("12345678");
         form.setUserName("사용자100");
@@ -51,26 +51,29 @@ public class ApiMemberControllerTest {
 
         String json = om.writeValueAsString(form);
         mockMvc.perform(
-                post("/api/member")
-                .contentType(MediaType.APPLICATION_JSON) //요청헤더
-                .content(json) //요청바디
-        ).andDo(print())
+                        post("/api/member")
+                                .contentType(MediaType.APPLICATION_JSON) // 요청 헤더
+                                .content(json) // 요청 바디
+                ).andDo(print())
                 .andExpect(status().isCreated());
+
 
         // Content-Type: application/x-www-form-urlencoded
         // 이름=값&이름=값...
+        /*
+        mockMvc.perform(
+                  post("/api/member")
+                .param("email", "user99@test.org")
+                .param("password", "12345678")
+                .param("confirmPassword", "12345678")
+                .param("userName", "사용자99"))
+                .andDo(print());
 
-//        mockMvc.perform(
-//                  post("/api/member")
-//                .param("email", "user99@test.org")
-//                .param("password", "12345678")
-//                .param("confirmPassword", "12345678")
-//                .param("userName", "사용자99"))
-//                .andDo(print());
-
+         */
     }
+
     @Test
-    void test2() throws Exception{
+    void test2() throws Exception {
         mockMvc.perform(get("/api/member/list"))
                 .andDo(print());
     }

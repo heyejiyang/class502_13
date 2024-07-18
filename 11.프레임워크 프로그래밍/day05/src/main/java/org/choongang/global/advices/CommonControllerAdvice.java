@@ -6,12 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.choongang.global.exceptions.CommonException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-@ControllerAdvice("org.choongang")//공통 처리 할 경로
+//@ControllerAdvice("org.choongang")//공통 처리 할 경로
 public class CommonControllerAdvice {
 
     @ExceptionHandler(Exception.class) //발생할 예외정보 클래스 정의(여러개 가능)
