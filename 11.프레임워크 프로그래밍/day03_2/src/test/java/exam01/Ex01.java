@@ -27,7 +27,36 @@ public class Ex01 {
 
         System.out.println(result);
     }
+/*
+    @Test
+    void test2(){
+        List<Member> members = jdbcTemplate.query("select * from MEMBER", new RowMapper<Member>() {//slq문으로 조회된 결과를 넘겨주면 Member쪽으로 값을 바꿔준다.
+            @Override
+            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Member.builder()
+                        .seq(rs.getInt("SEQ"))
+                        .email(rs.getString("EMAIL"))
+                        .password(rs.getString("PASSWORD"))
+                        .userName(rs.getString("USER_NAME"))
+                        .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
+                        .build();
+            }
+        });
+        members.forEach(System.out::println);
+    }
+    */
+    /*@Test
+    void test2(){
+        List<Member> members = jdbcTemplate.query("select * from MEMBER", (rs, num) -> Member.builder()
+                .seq(rs.getInt("SEQ"))
+                .email(rs.getString("EMAIL"))
+                .password(rs.getString("PASSWORD"))
+                .userName(rs.getString("USER_NAME"))
+                .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
+                .build());
 
+        members.forEach(System.out::println);
+    }*/
     @Test
     void test2(){
 //        List<Member> members = jdbcTemplate.query("select * from MEMBER", (rs, num) -> mapper(rs, num));
