@@ -53,7 +53,7 @@ public class ApiMemberController {
          //Content-Type: application/json
         Member member = mapper.get(email);
 
-        return new JSONData(member);
+        return new JSONData(member); //회원정보 넘겨줌
     }
 
     @GetMapping("/list") //임의의 회원 목록을 생성하여 JSONData형식으로 반환

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+//@RequiredArgsConstructor는 final 필드와 @NonNull 필드를 매개변수로 받는 생성자를 자동으로 생성
 //Json은 틀을 정해 공통된 형식으로 보내는게 좋음
 public class JSONData {
     private HttpStatus status = HttpStatus.OK; //200
