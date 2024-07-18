@@ -18,4 +18,5 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 //.excludePathPatterns("/member/**");
                 .addPathPatterns("/mypage/**");/*패턴 추가해서 여러 페이지 추가할 수 있다*//* 별표 두개 -> 현재 경로 포함 하위 경로*/
     }
+
 }

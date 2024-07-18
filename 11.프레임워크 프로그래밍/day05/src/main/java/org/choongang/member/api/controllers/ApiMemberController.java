@@ -36,11 +36,13 @@ public class ApiMemberController {
         if(errors.hasErrors()){
             throw new BadRequestException(utils.getErrorMessages(errors)); //객체에 오류가 발생하면 해당 메서드를 통해 오류 메시지를 가공하고 에러 발생시킴
         }
-
+/*
         boolean result = false;
         if(!result){ //오류 있으면 예외발생
             throw new BadRequestException("예외 테스트!");
         }
+        */
+
         joinService.process(form); //에러없이 성공시 회원가입 처리
 
         // 응답코드 201, 출력 바디 없음
