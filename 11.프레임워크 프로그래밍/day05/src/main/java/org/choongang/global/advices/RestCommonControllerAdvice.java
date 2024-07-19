@@ -20,10 +20,11 @@ public class RestCommonControllerAdvice {
 
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // 기본 상태 코드 500
         if (e instanceof CommonException commonException) { //내가 정의한 예외 타입인지
-            status = commonException.getStatus();
+            status = commonException.getStatus(); //내가 정의한 상태코드
 
             Map<String, List<String>> errorMessages = commonException.getErrorMessages();
-            if (errorMessages != null) message = errorMessages;
+
+            if (errorMessages != null) message = errorMessages; //커맨드 객체 검증 에러일때
         }
 
         JSONData data = new JSONData(); //응답 데이터 구성

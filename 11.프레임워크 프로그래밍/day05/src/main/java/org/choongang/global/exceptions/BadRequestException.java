@@ -11,6 +11,6 @@ public class BadRequestException extends CommonException{
     }
     public BadRequestException(Map<String, List<String>> errorMessages){
         super(null, HttpStatus.BAD_REQUEST);
-        setErrorMessages(errorMessages);
+        setErrorMessages(errorMessages);  //커맨드객체 에러 부모 CommonException에 줌
     }
 }
