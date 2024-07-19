@@ -25,6 +25,7 @@ public class ThymeleafConfig  implements WebMvcConfigurer {
         templateResolver.setSuffix(".html"); //네츄럴 템플릿
         templateResolver.setCacheable(false); //캐시 - 배포시 true로 바꿈
         //요청시마다 번역을 해야지 작업물을 볼 수 있기 때문에 false로 해둬야함
+        // 번역? 서버가 일을 한다
         return templateResolver;
     }
 
@@ -33,7 +34,7 @@ public class ThymeleafConfig  implements WebMvcConfigurer {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true); //true -> el식 지원
-        templateEngine.addDialect(new Java8TimeDialect()); //확장 기능 설정
+        templateEngine.addDialect(new Java8TimeDialect()); //addDialect 확장 기능 설정
         templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
@@ -41,7 +42,8 @@ public class ThymeleafConfig  implements WebMvcConfigurer {
     @Bean
     public ThymeleafViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setContentType("text/html"); //템플릿쪽에 반복적으로 설정 해줘야했던 부분 여기서 추가함
+        //템플릿쪽에 반복적으로 설정 해줘야했던 부분 여기서 추가함
+        resolver.setContentType("text/html");
         resolver.setCharacterEncoding("utf-8");
         resolver.setTemplateEngine(templateEngine());
         return resolver;

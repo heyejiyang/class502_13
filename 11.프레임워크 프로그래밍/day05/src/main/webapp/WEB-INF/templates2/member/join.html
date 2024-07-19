@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <form method="post" autocomplete="off">
+            <dl>
+                <dt th:text="#{이메일입력}">이메일</dt>
+                <dd>
+                    <input type="text" name="email" th:value="${requestJoin.email}" value="user01@test.org">
+                </dd>
+            </dl>
+            <dl>
+                <dt>비밀번호</dt>
+                <dd>
+                    <input type="password" name="password">
+                </dd>
+            </dl>
+            <dl>
+                <dt>비밀번호 확인</dt>
+                <dd>
+                    <input type="password" name="confirmPassword">
+                </dd>
+            </dl>
+            <dl>
+                <dt>회원명</dt>
+                <dd>
+                    <input type="text" name="userName" value="사용자01">
+                </dd>
+            </dl>
+            <div>
+                <input type="checkbox" name="agree" value="true" id="agree">
+                <label for="agree">회원가입 약관에 동의합니다.</label>
+            </div>
+            <button type="submit">가입하기</button>
+        </form>
+    </body>
+</html>
