@@ -14,7 +14,7 @@
         SELECT COUNT(*) FROM MEMBER WHERE EMAIL=#{email}
     </select>
     <select id="get" resultMap="memberMap">
-        SELECT * FROM FROM MEMBER WHERE EMAIL=#{email}
+        SELECT SEQ, EMAIL, PASSWORD, USER_NAME, REG_DT FROM MEMBER WHERE EMAIL = #{email}
     </select>
     <insert id="register">
         INSERT INTO MEMBER (SEQ, EMAIL, PASSWORD, USER_NAME)

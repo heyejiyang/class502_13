@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.validators.JoinValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +19,11 @@ public class MemberController {
     private final JoinValidator joinValidator;
     private final JoinService joinService;
 
+    private final LoginValidator loginValidator;
+
     @GetMapping("/join")
     public String join(@ModelAttribute RequestJoin form){
-        return "member/join";
+        return "/member/join";
     }
 
     @PostMapping("/join")
@@ -31,7 +33,7 @@ public class MemberController {
         joinValidator.validate(form,errors);
 
         if(errors.hasErrors()){
-            return "member/join";
+            return "/member/join";
         }
 
         joinService.process(form);//회원가입 처리
@@ -40,7 +42,16 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(@ModelAttribute RequestLogin form) {
         return "/member/login";
+    }
+
+    @PostMapping("/login")
+    public String loginPs(@Valid RequestLogin form, Errors errors){
+        loginValidator.validate(form,errors);
+        if(errors.hasErrors()){
+            return "/member/login";
+        }
+        return "redirect:/";
     }
 }

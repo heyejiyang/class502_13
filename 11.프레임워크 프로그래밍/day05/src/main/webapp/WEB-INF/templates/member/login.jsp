@@ -26,11 +26,9 @@
             <form:errors path="password"/>
         </dd>
     </dl>
-    <dl>
-        <dd>
-            <form:checkbox path="saveEmail" value="true" label="${saveEmailTitle}"/>
-        </dd>
-    </dl>
+    <div>
+        <form:checkbox path="saveEmail" value="true" label="${saveEmailTitle}"/>
+    </div>
     <form:errors element="div" delimiter=""/>
     <button type="submit">
         <spring:message code="로그인"/>
