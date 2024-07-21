@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.choongang")
-@Import({DBConfig.class, MessageConfig.class})
+@Import({DBConfig.class, MessageConfig.class, InterceptorConfig.class})
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
 
@@ -34,7 +34,8 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
                 .setViewName("main/index"); //컨트롤러 없이 연동할 페이지 추가
-
+        registry.addViewController("/mypage")
+                .setViewName("mypage/index");
 
     }
 }

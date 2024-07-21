@@ -3,7 +3,9 @@ package org.choongang.member.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.member.entities.Member;
 import org.choongang.member.services.JoinService;
+import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
 import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,7 @@ public class MemberController {
 
     private final JoinValidator joinValidator;
     private final JoinService joinService;
-
+    private final LoginService loginService;
     private final LoginValidator loginValidator;
 
     @GetMapping("/join")
@@ -42,7 +44,13 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login(@ModelAttribute RequestLogin form) {
+    public String login(@ModelAttribute RequestLogin form,
+                        @CookieValue(name = "savedEmail", required = false) String savedEmail) {
+
+        if(savedEmail != null){
+            form.setSaveEmail(true);
+            form.setEmail(savedEmail);
+        }
         return "/member/login";
     }
 
@@ -52,6 +60,7 @@ public class MemberController {
         if(errors.hasErrors()){
             return "/member/login";
         }
+        loginService.process(form);
         return "redirect:/";
     }
 }
