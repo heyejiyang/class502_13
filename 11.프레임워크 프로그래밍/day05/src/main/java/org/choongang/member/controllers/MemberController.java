@@ -108,7 +108,6 @@ public class MemberController {
 
     @GetMapping("/list")
     public String list(Model model){
-
         /*
         Member member = Member.builder()
                 .email("user01@test.org")
@@ -119,7 +118,6 @@ public class MemberController {
 
         model.addAttribute("member", member);
         */
-
         List<Member> items = IntStream.rangeClosed(1,10)
                 .mapToObj(i -> Member.builder()
                         .email("user"+i+"@test.org")
@@ -128,6 +126,10 @@ public class MemberController {
                         .build())
                 .toList();
         model.addAttribute("items", items);
+
+        model.addAttribute("addCss", new String[] {"member/style","member/list"});
+        model.addAttribute("addScript",List.of("member/common","member/list"));
+
         return "member/list";
     }
 

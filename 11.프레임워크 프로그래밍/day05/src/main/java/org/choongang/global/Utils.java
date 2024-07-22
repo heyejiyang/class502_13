@@ -16,10 +16,15 @@ import java.util.stream.Collectors;
 // 에러 객체가 넘어오면 메시지 코드를 필드명과 오류 메시지를 같이 담아서 가공한다.
 @Component
 @RequiredArgsConstructor
-public class Utils {
+public class Utils { //빈의 이름 utils
 
     private final MessageSource messageSource; //메시지 코드로부터 실제 메시지(문자열)을 가져오는데 쓴다.
     private final HttpServletRequest request;
+
+    //접근 방법 알기 위해 임의로 정의 이렇게 해줄필요는 없다 X
+    public String toUpper(String str){
+        return str.toUpperCase();
+    }
 
     // Errors 객체를 받아서 필드명과 그에 대한 오류 메시지를 Map으로 반환하는 메서드
     // Errors에는 필드 오류와 글로벌 오류를 포함한다.
