@@ -1,0 +1,29 @@
+server:
+  port: 3000
+
+spring:
+  # 데이터베이스 설정
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    #driverClassName - 카멜케이스 방식 가능
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: ${db.username} #환경변수 설정하면 그 변수로 대체된다.
+    password: ${db.password}
+
+  # JAP 설정
+  jpa:
+    properties:
+      show_sql: true # 실행하는 SQL을 콘솔에 출력
+      format_sql: true # 실행되는 SQL의 들여쓰기 및 줄 개행
+      use_sql_comments: true
+      # dialect: org.hibernate.dialect.OracleDialect # 과거 버전에는 추가해야함
+    hibernate:
+      ddl-auto: create # 테이블, 제약조건.. 자동
+      #ddlAuto
+
+# 로거 설정
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
