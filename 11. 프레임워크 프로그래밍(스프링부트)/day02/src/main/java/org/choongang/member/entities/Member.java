@@ -1,7 +1,10 @@
 package org.choongang.member.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
 
@@ -13,6 +16,9 @@ import org.choongang.member.constants.Authority;
 //@Table(name = "CH_MEMBER")
 //@Table(indexes = {@Index(name = "idx_created_at_desc"/*내림차순*/,columnList = "createAt DESC"/*db컬럼x 클래스 속성 이름으로*/),
 //            @Index(name = "uq_email_password",columnList = "email, password", unique = true)})
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member extends BaseEntity {//기본 클래스 명이 테이블 명이 된다.
     @Id @GeneratedValue() //시퀀스 객체로 자동 증감
     private Long seq;
