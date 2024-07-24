@@ -31,15 +31,16 @@ public class Ex04 {
         em.clear(); //영속성을 지워야 다시 조회 할 수 있기 때문에 영속성 초기화 시킴
 
         member = em.find(Member.class,member.getSeq());
-        System.out.println(member);
+        System.out.printf("createdAt: %s, modifiedAt: %s\n", member.getCreatedAt(), member.getModifiedAt());
 
         //수정
         Thread.sleep(5000); //5초 뒤 수정 후 실제 시간차이 나는지 체크
         member.setUserName("장사용자");
+        member.setCreatedAt(LocalDateTime.now());
         em.flush();
         em.clear(); //다시 쿼리 실행 위해
 
         member = em.find(Member.class,member.getSeq());
-        System.out.println(member);
+        System.out.printf("createdAt: %s, modifiedAt: %s\n", member.getCreatedAt(), member.getModifiedAt());
     }
 }
