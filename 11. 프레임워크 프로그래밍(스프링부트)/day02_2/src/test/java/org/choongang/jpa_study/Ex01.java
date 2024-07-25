@@ -1,10 +1,9 @@
-package com.choongang.jpa_study;
+package org.choongang.jpa_study;
 
-import com.choongang.member.entites.Member;
+import org.choongang.member.entites.Member;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 

@@ -1,6 +1,6 @@
-package com.choongang.jpa_study;
+package org.choongang.jpa_study;
 
-import com.choongang.member.entites.Member;
+import org.choongang.member.entites.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
