@@ -36,7 +36,7 @@ public class Member extends BaseEntity {//기본 클래스 명이 테이블 명�
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_seq")
     private MemberProfile profile;
 

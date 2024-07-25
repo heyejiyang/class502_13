@@ -63,7 +63,7 @@ public class Ex09 {
         System.out.println(item);
 
         Member member = item.getMember(); //게시글을 작성한 회원
-        System.out.println(member);
+        System.out.println(member); //member쪽 항목을 사용해야 쿼리가 실행된다.
     }
 
     @Test
