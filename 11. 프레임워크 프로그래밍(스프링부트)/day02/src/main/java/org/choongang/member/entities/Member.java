@@ -1,12 +1,12 @@
 package org.choongang.member.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.choongang.board.entities.BoardData;
 import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
+
+import java.util.List;
 
 //데이터 클래스
 //이 정보를 바탕으로 기본적인 테이블이 자동 생성된다.
@@ -35,5 +35,13 @@ public class Member extends BaseEntity {//기본 클래스 명이 테이블 명�
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    @OneToOne
+    @JoinColumn(name = "profile_seq")
+    private MemberProfile profile;
+
+    @ToString.Exclude //ToString 추가 배제
+    @OneToMany(mappedBy = "member") // 관계의 주인(연관관계 주인)을 설정해줘야 한다.
+    private List<BoardData> items;
 
 }
