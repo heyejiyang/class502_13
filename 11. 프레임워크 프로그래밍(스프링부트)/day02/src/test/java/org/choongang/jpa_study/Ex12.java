@@ -1,6 +1,10 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -124,5 +128,45 @@ public class Ex12 {
         QBoardData boardData = QBoardData.boardData;
         JPAQuery<Long> query = queryFactory.select(boardData.seq.sum())
                 .from(boardData);
+
+        long sum = query.fetchOne();
+        //fetchOne(): 하나만 가져옴, fetchFirst(): 여러개중 한개만 가져옴
+        System.out.println(sum);
+    }
+
+    @Test
+    void test7(){
+        QBoardData boardData = QBoardData.boardData;
+
+        BooleanBuilder andBuilder = new BooleanBuilder();
+        andBuilder.and(boardData.subject.contains("제목"))
+                .and(boardData.member.email.eq("user01@test.org")); //다른 엔티티 테이블 접근할때 boardData.member 이런식으로 접근해야함 바로 Member로 접근 불가
+        //eq: equal
+        /*
+        BooleanBuilder orBuilder = new BooleanBuilder();
+        orBuilder.or(boardData.seq.eq(2L))
+                .or(boardData.seq.eq(3L))
+                .or(boardData.seq.eq(4L));
+
+        andBuilder.and(orBuilder); //or 조건 and 빌더에 통합
+        */
+
+        PathBuilder<BoardData> pathBuilder = new PathBuilder<>(BoardData.class, "boardData"); //QBoardData의 변수명
+
+        JPAQuery<BoardData> query = queryFactory.selectFrom(boardData)
+                .leftJoin(boardData.member)
+                .fetchJoin()
+                .where(andBuilder) //where이라는 메서드를 치환
+                .offset(3) //조회 시작 레코드 위치, 3번 행부터 조회 시작
+                .limit(3) //3개 레코드로 한정 - 추출될 개수를 제한할 수 있다.
+                .orderBy(
+                        new OrderSpecifier(Order.DESC,pathBuilder.get("createdAt")),//Comparable: 정렬기준(정렬방향,대상)
+                        new OrderSpecifier(Order.ASC,pathBuilder.get("subject")) //정렬 기준 추가
+                );
+                //.where(boardData.seq.in(2L,3L,4L));//where절에는 조건식을 넣을 수 있음         //게시글 번호에서 2, 3, 4 번만 조회시 in 조건 사용
+        //booleanExpression(Predicate 구현클래스)형태로 반환값이 나온다. - 상위 인터페이스: Predicate
+
+        List<BoardData> items = query.fetch();
+        items.forEach(System.out::println);
     }
 }
