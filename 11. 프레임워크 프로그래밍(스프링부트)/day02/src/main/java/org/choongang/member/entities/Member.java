@@ -41,7 +41,8 @@ public class Member extends BaseEntity {//기본 클래스 명이 테이블 명�
     private MemberProfile profile;
 
     @ToString.Exclude //ToString 추가 배제
-    @OneToMany(mappedBy = "member") // 관계의 주인(연관관계 주인)을 설정해줘야 한다.
+    @OneToMany(mappedBy = "member", cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true) // 관계의 주인(연관관계 주인)을 설정해줘야 한다.
+    //제약조건 CASCADE ON DELETE는 아님
     private List<BoardData> items;
 
 }
