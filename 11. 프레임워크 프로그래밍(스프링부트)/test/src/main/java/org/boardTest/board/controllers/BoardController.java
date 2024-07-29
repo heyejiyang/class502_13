@@ -1,10 +1,12 @@
 package org.boardTest.board.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.boardTest.board.entities.BoardData;
 import org.boardTest.board.services.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +19,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/list")
-    public String list(@ModelAttribute BoardData form, Model model){
-        List<BoardData> items = boardService.items();
+    public String list(@ModelAttribute BoardForm form, Model model){
+        List<BoardForm> items = boardService.items();
         model.addAttribute("items", items);
         return "board/list";
     }
@@ -29,15 +31,15 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String registerPs(@ModelAttribute BoardData form){
+    public String registerPs(@Valid BoardData form, Errors errors){
         boardService.save(form);
         return "redirect:/board/list";
     }
 
     @GetMapping("/update/{seq}")
     public String update(@PathVariable Long seq,Model model){
-        BoardData boardData = boardService.find(seq);
-        model.addAttribute("boardData", boardData);
+        BoardForm form = boardService.find(seq);
+        model.addAttribute("boardData", form);
         return "board/update";
     }
 

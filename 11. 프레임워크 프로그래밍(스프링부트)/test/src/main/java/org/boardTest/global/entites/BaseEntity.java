@@ -22,6 +22,6 @@ public abstract class BaseEntity {
     private LocalDateTime createdAt;
 
     @LastModifiedDate //스프링 표준적 애노테이션
-    @Column(updatable = false) //수정X
+    @Column(insertable = false) //수정X
     private LocalDateTime modifiedAt;
 }

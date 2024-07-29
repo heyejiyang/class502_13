@@ -1,6 +1,7 @@
 package org.boardTest.board.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +16,10 @@ public class BoardData extends BaseEntity {
     @Id
     @GeneratedValue
     private Long seq;
-    @Column(nullable = false)
+    @Column(length = 30, nullable = false)
     private String subject;
     @Lob
     private String content;
-    @Column(nullable = false)
+    @Column(length = 10, nullable = false)
     private String writer;
 }
