@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
@@ -19,7 +21,8 @@ public class BoardController {
 
     @GetMapping("/list")
     public String list(@ModelAttribute RequestBoard form, Model model){
-        model.addAttribute("boardData", boardService.items());
+        List<BoardData> boardData = boardService.items();
+        model.addAttribute("boardData", boardData);
         return "board/list";
     }
 
@@ -36,6 +39,13 @@ public class BoardController {
         }
         boardService.save(form);
         return "redirect:/board/list";
+    }
+
+    @GetMapping("/view/{seq}")
+    public String view(@PathVariable("seq") Long seq, Model model){
+        BoardData boardData = boardService.find(seq);
+        model.addAttribute("boardData", boardData);
+        return "board/view";
     }
 
     @GetMapping("/update/{seq}")
