@@ -1,7 +1,7 @@
 package org.boardTest.board.services;
 
 import lombok.RequiredArgsConstructor;
-import org.boardTest.board.controllers.BoardForm;
+import org.boardTest.board.controllers.RequestBoard;
 import org.boardTest.board.entities.BoardData;
 import org.boardTest.board.repositories.BoardDataRepository;
 import org.springframework.stereotype.Service;
@@ -15,24 +15,23 @@ public class BoardService {
 
     private final BoardDataRepository boardDataRepository;
 
-    public List<BoardForm> items(){
+    public List<BoardData> items(){
+
         return boardDataRepository.findAll();
     }
 
-    public void save(BoardForm form){
+    public void save(RequestBoard form){
+
         BoardData boardData = new ModelMapper().map(form,BoardData.class);
-    }
 
-    public void save(BoardData boardData){
         boardDataRepository.saveAndFlush(boardData);
-//        boardDataRepository.saveAndFlush(boardData);
     }
 
-    public BoardForm find(Long seq){
+    public BoardData find(Long seq){
         return boardDataRepository.findById(seq).orElse(null);
     }
 
-    public void delete(BoardForm boardData){
+    public void delete(BoardData boardData){
         boardDataRepository.delete(boardData);
     }
 
