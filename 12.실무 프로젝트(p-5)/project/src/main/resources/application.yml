@@ -1,0 +1,17 @@
+server:
+  port: 3000
+
+springdoc:
+  version: '1.0.0'
+  api-docs:
+    path: /api-docs
+  default-consumes-media-type: application/json #요청 헤더 정보
+  default-produces-media-type: application/json #응답
+  swagger-ui:
+    operations-sorter: alpha #정렬
+    tags-sorter: alpha
+    path: /apidocs.html # 내가 만든 경로로 최초로 유입될 수 있게 한정
+    disable-swagger-default-url: true
+  paths-to-match: # url 매칭
+    - /api/** # 앞에 api가 붙는 경로이면 자동 문서를 만들어 줄 수 있도록
+
